@@ -25,7 +25,12 @@ public class GroupeServiceImp implements IGroupeService{
 
     @Override
     public void modifierGroupe(Groupe gGroupe) {
+
+        for (Contact contact : gGroupe.getContact()) {
+            contact.setGrpC(gGroupe);
+        }
         grouprDao.save(gGroupe);
+
     }
 
     @Override

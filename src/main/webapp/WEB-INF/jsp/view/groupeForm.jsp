@@ -45,7 +45,7 @@ h3 {
 												href="${pageContext.request.contextPath}/groupeForm">Ajout Groupe</a></li>
 						<li class="nav-item"><a class="nav-link"
 												href="${pageContext.request.contextPath}/afficherGroupes">Mes Groupes</a></li>
-						<li class="nav-item"><a class="nav-link active"
+						<li class="nav-item"><a class="nav-link"
 												href="${pageContext.request.contextPath}/rechercherGroupe">Rechercher Groupe</a></li>
 					</ul>
 				</div>

@@ -213,28 +213,34 @@ public class ContactController {
 
     @RequestMapping("/contactAjoutGroupe/{id}")
     public String contactAjoutGroupe(Model model,@PathVariable Long id) {
+
         Groupe grp=groupeService.getGroupeById(id);
         model.addAttribute("grpModel", grp);
         model.addAttribute("listContacts",contactService.afficherContactsParOrdre());
         return "contactAjoutGroupe";
     }
 
-    @PostMapping("/contactDansGroupe/{idContact}")
-    public String contactDansGroupe(@PathVariable Long idContact, @ModelAttribute("grpModel") Groupe grp) {
+    @GetMapping("/contactDansGroupe/{id}/{idContact}")
+    public String contactDansGroupe(@PathVariable Long idContact, @PathVariable Long id) {
 
-        System.out.println(idContact);
-        System.out.println("0101010"+grp+"hh");
-        System.out.println(contactService.getContactById(idContact));
+        Groupe grp=groupeService.getGroupeById(id);
         grp.getContact().add(contactService.getContactById(idContact));
         groupeService.modifierGroupe(grp);
 
-        return "contactAjoutGroupe";
+
+        return "redirect:/contactAjoutGroupe/"+id;
     }
 
     @GetMapping("/supprimerGroupe/{id}")
     public String supprimerGroupe(@PathVariable Long id) {
+
+        Groupe grp=groupeService.getGroupeById(id);
+        for (Contact cnt : grp.getContact()) {
+            cnt.setGrpC(null);
+            contactService.modifierContact(cnt);
+        }
         groupeService.supprimerGroupe(id);
-        return "redirect:/afficherContacts";
+        return "redirect:/afficherGroupes";
     }
 
     @RequestMapping("/modifierFormGrp/{id}")

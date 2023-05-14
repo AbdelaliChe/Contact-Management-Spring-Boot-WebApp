@@ -2,8 +2,10 @@ package com.ensah.bo;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.List;
+import java.util.List;
 
 @Entity
 public class Groupe {
@@ -13,8 +15,8 @@ public class Groupe {
     @NotBlank(message = "champs important!")
     private String nom;
 
-    @OneToMany(mappedBy = "grpC")
-    private Set<Contact> contact = new HashSet<Contact>();
+    @OneToMany(mappedBy = "grpC", cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
+    private List<Contact> contact = new ArrayList<Contact>();
 
     @Override
     public boolean equals(Object o) {
@@ -34,7 +36,7 @@ public class Groupe {
     public Groupe() {
     }
 
-    public Groupe(Long idGroupe, String nom, Set<Contact> contact) {
+    public Groupe(Long idGroupe, String nom, List<Contact> contact) {
         this.idGroupe = idGroupe;
         this.nom = nom;
         this.contact = contact;
@@ -56,20 +58,23 @@ public class Groupe {
         this.nom = nom;
     }
 
-    public Set<Contact> getContact() {
+    public List<Contact> getContact() {
         return contact;
     }
 
-    public void setContact(Set<Contact> contact) {
+    public void setContact(List<Contact> contact) {
         this.contact = contact;
     }
 
     @Override
     public String toString() {
-        return "Groupe{" +
+        String Strings="Groupe{" +
                 "idGroupe=" + idGroupe +
                 ", nom='" + nom + '\'' +
-                ", contact=" + contact +
-                '}';
+                ", contact= '}";
+        for(Contact c:contact){
+            Strings+=c.toString();
+        }
+        return Strings;
     }
 }

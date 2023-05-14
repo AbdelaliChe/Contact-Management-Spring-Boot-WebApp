@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Liste Contacts</title>
+<title>Ajouter au groupe</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -54,7 +54,7 @@ h3 {
 
 
 	<div>
-		<h3>Contacts</h3>
+		<h3>Contacts a Ajouter au: ${grpModel.nom}</h3>
 	</div>
 	<div>
 		<table class="table align-middle mb-0 bg-white">
@@ -76,6 +76,7 @@ h3 {
 			<tbody>
 			<c:if test="${not empty listContacts}">
 			<c:forEach items="${listContacts}" var="Contact">
+			<c:if test="${!grpModel.getContact().contains(Contact)}">
 				<tr>
 					<td><c:out value="${Contact.idContact}"></c:out></td>
 					<td><c:out value="${Contact.nom}"></c:out></td>
@@ -87,8 +88,9 @@ h3 {
 					<td><c:out value="${Contact.emailProfessionel}"></c:out></td>
 					<td><c:out value="${Contact.genre}"></c:out></td>
 					<td><button type="button" class="btn btn-dark btn-rounded btn-sm fw-bold"  data-mdb-ripple-color="dark">
-						<a href="${pageContext.request.contextPath}/contactDansGroupe/${Contact.idContact}" style="color:inherit">Ajouter</a></button></td>
+						<a href="${pageContext.request.contextPath}/contactDansGroupe/${grpModel.idGroupe}/${Contact.idContact}" style="color:inherit">Ajouter</a></button></td>
 				</tr><td>
+			</c:if>
 			</c:forEach>
 			</c:if>
 			</tbody>
