@@ -6,6 +6,7 @@ import com.ensah.service.IContactService;
 import com.ensah.service.IGroupeService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -69,6 +70,7 @@ public class ContactController {
     public String modifierForm(Model model,@PathVariable Long id) {
         Contact cnt = contactService.getContactById(id);
         model.addAttribute("contactModel", cnt);
+        model.addAttribute("listGroupes",groupeService.afficherGroupe());
 
         return "editForm";
     }
@@ -159,8 +161,13 @@ public class ContactController {
             model.addAttribute("errorMsg", "Les données sont invalides.");
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
-            groupeService.creeGroupe(grp);
-            model.addAttribute("infoMsg", "Groupe ajouté avec succès");
+            try {
+                groupeService.creeGroupe(grp);
+                model.addAttribute("infoMsg", "Groupe ajouté avec succès");
+            }catch (DataIntegrityViolationException ex){
+                model.addAttribute("errorMsg", "Groupe deja existe");
+                LOGGER.error("Erreur de unique groupe" + ex.getMessage());
+            }
         }
 
         return "groupeForm";

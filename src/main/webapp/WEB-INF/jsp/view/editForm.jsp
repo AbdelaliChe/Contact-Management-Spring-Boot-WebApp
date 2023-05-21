@@ -130,6 +130,20 @@ h3 {
 					</div>
 
 					<div class="col">
+						<label>Groupe</label>
+						<f:select path="grpC" class="form-select" aria-label="Default select example">
+							<option selected>${contactModel.grpC.nom}</option>
+							<c:if test="${not empty listGroupes}">
+							<c:forEach items="${listGroupes}" var="Groupe">
+								<c:if test="${Groupe.nom!=contactModel.grpC.nom}">
+								<option value="${Groupe.nom}"><c:out value="${Groupe.nom}"></c:out></option>
+								</c:if>
+							</c:forEach>
+							</c:if>
+						</f:select>
+					</div>
+
+					<div class="col">
 						<legend class="col-form-label col-sm-2 pt-0">Genre</legend>
 						<div class="form-check">
 							<f:radiobutton path="genre" class="form-check-input"
@@ -152,7 +166,7 @@ h3 {
 			</f:form>
 		</div>
 
-
+	</div>
 	</div>
 </body>
 </html>

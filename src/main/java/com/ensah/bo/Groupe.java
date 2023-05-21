@@ -13,6 +13,7 @@ public class Groupe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idGroupe;
     @NotBlank(message = "champs important!")
+    @Column(unique=true)
     private String nom;
 
     @OneToMany(mappedBy = "grpC", cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)

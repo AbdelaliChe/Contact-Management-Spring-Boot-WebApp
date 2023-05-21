@@ -1,6 +1,7 @@
 package com.ensah.service;
 
 import com.ensah.bo.Contact;
+import com.ensah.bo.Groupe;
 import com.ensah.dao.IContactDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

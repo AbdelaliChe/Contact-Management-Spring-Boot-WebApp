@@ -2,9 +2,10 @@ package com.ensah.service;
 
 import com.ensah.bo.Contact;
 import com.ensah.bo.Groupe;
-import com.ensah.dao.IContactDao;
+import org.apache.log4j.Logger;
 import com.ensah.dao.IGroupeDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,13 +15,19 @@ import java.util.List;
 @Transactional
 public class GroupeServiceImp implements IGroupeService{
 
+    protected final Logger LOGGER = Logger.getLogger(getClass());
     @Autowired
     IGroupeDao grouprDao;
 
 
     @Override
     public void creeGroupe(Groupe gGroupe) {
-        grouprDao.save(gGroupe);
+        try {
+            grouprDao.save(gGroupe);
+        } catch (DataIntegrityViolationException ex) {
+            LOGGER.error("Integrity constraint violation occurred: " + ex.getMessage());
+            throw ex;
+        }
     }
 
     @Override
