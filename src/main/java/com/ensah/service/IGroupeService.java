@@ -18,5 +18,7 @@ public interface IGroupeService {
 
     public Groupe getGroupeById(Long id);
 
+    public Groupe getGroupeByNom(String nom);
+
 
 }

@@ -70,14 +70,11 @@ public class ContactController {
     public String modifierForm(Model model,@PathVariable Long id) {
         Contact cnt = contactService.getContactById(id);
         model.addAttribute("contactModel", cnt);
-        model.addAttribute("listGroupes",groupeService.afficherGroupe());
-
         return "editForm";
     }
 
     @PostMapping("/modifierContact")
-    public String modifierContact(@Valid @ModelAttribute("contactModel") Contact contact, BindingResult bindingResult,
-                               ModelMap model) {
+    public String modifierContact(@Valid @ModelAttribute("contactModel") Contact contact, BindingResult bindingResult, ModelMap model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errorMsg", "Les données sont invalides.");
             LOGGER.warn("Erreur de validation du formulaire");
@@ -87,6 +84,31 @@ public class ContactController {
         }
         return "editForm";
     }
+
+    @RequestMapping("/affectationForm/{id}")
+    public String affectationForm(Model model, @PathVariable Long id) {
+        Contact cnt = contactService.getContactById(id);
+        model.addAttribute("contactModel", cnt);
+        model.addAttribute("listGroupes", groupeService.afficherGroupe());
+        return "affectation";
+    }
+
+    @PostMapping("/affecterContactGrp")
+    public String affecterContactGrp(@Valid @ModelAttribute("contactModel") Contact contact,
+                                     @RequestParam("groupId") Long groupId,
+                                     BindingResult bindingResult, ModelMap model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errorMsg", "Les données sont invalides.");
+            LOGGER.warn("Erreur de validation du formulaire");
+        } else {
+            Groupe grp = groupeService.getGroupeById(groupId);
+            contact.setGrpC(grp);
+            contactService.modifierContact(contact);
+            model.addAttribute("infoMsg", "Contact modifié avec succès");
+        }
+        return "affectation";
+    }
+
 
 
     @GetMapping("/rechercherNomContact")
@@ -271,4 +293,16 @@ public class ContactController {
         return "editFormGrp";
     }
 
+    @RequestMapping("/supprimerContactGroupe/{id}/{idContact}")
+    public String supprimerContactGroupe(Model model,@PathVariable Long id, @PathVariable Long idContact) {
+
+        Groupe grp = groupeService.getGroupeById(id);
+        Contact cnt = contactService.getContactById(idContact);
+        grp.getContact().remove(contactService.getContactById(idContact));
+        cnt.setGrpC(null);
+        contactService.modifierContact(cnt);
+        groupeService.modifierGroupe(grp);
+
+        return "redirect:/GroupeContact/"+id;
+    }
 }

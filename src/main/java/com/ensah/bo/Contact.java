@@ -28,15 +28,13 @@ public class Contact {
     private String adresse;
 
     @Email(message = "Entrer un email personnel")
-    @Pattern(regexp = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", message = "email : exemple@gmail.com")
     @NotBlank(message = "champs important!")
     private String emailPeronnel;
 
     @Email(message = "Entrer un email professionel")
-    @Pattern(regexp = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", message = "email : exemple@gmail.com")
     private String emailProfessionel;
 
-    @NotBlank(message = "This field is required")
+    @NotBlank(message = "champs important!")
     private String genre;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})

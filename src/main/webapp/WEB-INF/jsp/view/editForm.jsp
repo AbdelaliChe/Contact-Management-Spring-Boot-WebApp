@@ -1,65 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="header.jsp" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>Ajouter Contact Forme</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-	crossorigin="anonymous">
+<div class="container p-4">
 
-<style>
-form {
-	margin-bottom: 60px;
-	margin-top: 10px;
-	padding: 10px;
-}
-
-h3 {
-	margin-top: 20px;
-}
-</style>
-
-
-</head>
-<body>
-	<div class="container">
-
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid">
-
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link"
-												href="${pageContext.request.contextPath}/afficherForm">Ajout Contact</a></li>
-						<li class="nav-item"><a class="nav-link"
-												aria-current="page"
-												href="${pageContext.request.contextPath}/afficherContacts">Mes Contacts</a></li>
-						<li class="nav-item"><a class="nav-link"
-												href="${pageContext.request.contextPath}/rechercherNomContact">Rechercher Contact</a></li>
-						<li class="nav-item"><a class="nav-link"
-												href="${pageContext.request.contextPath}/groupeForm">Ajout Groupe</a></li>
-						<li class="nav-item"><a class="nav-link"
-												href="${pageContext.request.contextPath}/afficherGroupes">Mes Groupes</a></li>
-						<li class="nav-item"><a class="nav-link"
-												href="${pageContext.request.contextPath}/rechercherGroupe">Rechercher Groupe</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-
-
-
-
-
+	<div class="d-flex justify-content-between align-items-end mb-3">
+		<h1 id="title">Modifier Contacts</h1>
 		<div>
-			<h3>Ajouter Contact</h3>
+			<button class="btn btn-dark">
+				<a href="${pageContext.request.contextPath}/afficherContacts" class="text-reset text-decoration-none text-truncate">
+					<i class="fas fa-list"></i> Liste des Contacts
+				</a>
+			</button>
 		</div>
+	</div>
 		<div>
 
 			<c:if test="${infoMsg!=null}">
@@ -73,32 +26,35 @@ h3 {
 
 			<f:form action="/modifierContact" method="POST" modelAttribute="contactModel">
 				<input type="hidden" name="idContact" value="${contactModel.idContact}"/>
-
-				<div class="row">
-					<div class="col">
-						<label>Nom</label>
-						<f:input path="Nom" type="text" class="form-control"
-							placeholder="Nom" />
-						<f:errors path="Nom" class="text-danger" />
+				<div class="form-group row mb-3">
+					<label class="col-sm-2 col-form-label">Nom</label>
+					<div class="col-sm-10">
+						<f:input path="nom" type="text" class="form-control"
+								 placeholder="Nom" />
+						<f:errors path="nom" class="text-danger" />
 					</div>
-					<div class="col">
-						<label>Prenom</label>
-						<f:input path="Prenom" type="text" class="form-control"
+				</div>
+				<div class="form-group row mb-3">
+					<label class="col-sm-2 col-form-label">Prenom</label>
+					<div class="col-sm-10">
+						<f:input path="prenom" type="text" class="form-control"
 								 placeholder="Prenom" />
-						<f:errors path="Prenom" class="text-danger" />
+						<f:errors path="prenom" class="text-danger" />
 					</div>
 				</div>
 
 
-				<div class="row">
-					<div class="col">
-						<label>Telephone Peronnel</label>
+				<div class="form-group row mb-3">
+					<label class="col-sm-2 col-form-label">Telephone Peronnel</label>
+					<div class="col-sm-10">
 						<f:input path="telephonePeronnel" type="text" class="form-control"
-							placeholder="Telephone Peronnel" />
+								 placeholder="Telephone Peronnel" />
 						<f:errors path="telephonePeronnel" class="text-danger" />
 					</div>
-					<div class="col">
-						<label>Telephone Professionel</label>
+				</div>
+				<div class="form-group row mb-3">
+					<label class="col-sm-2 col-form-label">Telephone Professionnel</label>
+					<div class="col-sm-10">
 						<f:input path="telephoneProfessionel" type="text" class="form-control"
 								 placeholder="Telephone Professionel" />
 						<f:errors path="telephoneProfessionel" class="text-danger" />
@@ -106,61 +62,53 @@ h3 {
 				</div>
 
 
-				<div class="row">
-					<div class="col">
-						<label>Email Peronnel</label>
+				<div class="form-group row mb-3">
+					<label class="col-sm-2 col-form-label">Email Peronnel</label>
+					<div class="col-sm-10">
 						<f:input path="emailPeronnel" class="form-control" placeholder="Email Peronnel" />
 						<f:errors path="emailPeronnel" class="text-danger" />
 					</div>
+				</div>
 
-					<div class="col">
-						<label>Email Professionel</label>
+				<div class="form-group row mb-3">
+					<label class="col-sm-2 col-form-label">Email Professionel</label>
+					<div class="col-sm-10">
 						<f:input path="emailProfessionel" class="form-control" placeholder="Email Professionel" />
 						<f:errors path="emailProfessionel" class="text-danger" />
 					</div>
 				</div>
 
 
-				<div class="row">
-					<div class="col">
-						<label>Adresse</label>
+				<div class="form-group row mb-3">
+					<label class="col-sm-2 col-form-label">Adresse</label>
+					<div class="col-sm-10">
 						<f:input path="adresse" type="text" class="form-control"
-							placeholder="...., Morocco" />
+								 placeholder="...., Morocco" />
 						<f:errors path="adresse" class="text-danger" />
 					</div>
+				</div>
 
-					<div class="col">
-						<label>Groupe</label>
-						<f:select path="grpC" class="form-select" aria-label="Default select example">
-							<option selected>${contactModel.grpC.nom}</option>
-							<c:if test="${not empty listGroupes}">
-							<c:forEach items="${listGroupes}" var="Groupe">
-								<c:if test="${Groupe.nom!=contactModel.grpC.nom}">
-								<option value="${Groupe.nom}"><c:out value="${Groupe.nom}"></c:out></option>
-								</c:if>
-							</c:forEach>
-							</c:if>
-						</f:select>
-					</div>
-
-					<div class="col">
-						<legend class="col-form-label col-sm-2 pt-0">Genre</legend>
-						<div class="form-check">
-							<f:radiobutton path="genre" class="form-check-input"
-								value="femelle" />
-							<label class="form-check-label">Femelle</label>
-						</div>
-						<div class="form-check">
-							<f:radiobutton path="genre" class="form-check-input"
-								value="male " />
-							<label class="form-check-label">Mâle </label>
-						</div>
+				<div class="form-group row mb-3">
+					<label class="col-sm-2 col-form-label">Genre</label>
+					<div class="col-sm-10">
+						<label class="list-group-item">
+							<input class="form-check-input me-1" type="radio" name="genre" id="femelleRadio" value="femelle" ${contactModel.genre == 'femelle' ? 'checked' : ''}>
+							Female
+						</label>
+						<label class="list-group-item">
+							<input class="form-check-input me-1" type="radio" name="genre" id="maleRadio"  value="male" ${contactModel.genre == 'male' ? 'checked' : ''}>
+							Male
+						</label>
 						<f:errors path="genre" class="text-danger" />
-
 					</div>
+				</div>
 
-				<div style="text-align: right">
-					<button type="submit" class="btn btn-primary">Modifier</button>
+
+		    </div>
+				<div class="row">
+					<div class="col-sm-10 offset-sm-2 d-flex justify-content-end">
+							<button type="submit" class="btn btn-primary"><i class="fa fa-pen text-light"></i> Modifier le Contact</button>
+					</div>
 				</div>
 
 			</f:form>

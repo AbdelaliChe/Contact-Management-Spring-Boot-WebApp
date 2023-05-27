@@ -59,4 +59,9 @@ public class GroupeServiceImp implements IGroupeService{
     public Groupe getGroupeById(Long id) {
         return grouprDao.findById(id).get();
     }
+
+    @Override
+    public Groupe getGroupeByNom(String nom) {
+        return grouprDao.findByNom(nom);
+    }
 }
