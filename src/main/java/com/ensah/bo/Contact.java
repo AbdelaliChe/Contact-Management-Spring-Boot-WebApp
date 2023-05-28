@@ -41,6 +41,7 @@ public class Contact {
     @JoinColumn(name = "GroupContactId")
     private Groupe grpC;
 
+
     public Contact() {
     }
 

@@ -31,14 +31,14 @@
 					<td><c:out value="${Groupe.idGroupe}"></c:out></td>
 					<td><c:out value="${Groupe.nom}"></c:out></td>
 					<td>
-						<button type="button" class="btn btn-outline-dark">
+						<button type="button" class="btn btn-light btn-outline-secondary mx-1">
 							<a href="${pageContext.request.contextPath}/contactAjoutGroupe/${Groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
 								<i class="fas fa-user-plus"></i> Affecter Contacts
 							</a>
 						</button>
 					</td>
 					<td>
-						<button type="button" class="btn btn-outline-dark">
+						<button type="button" class="btn btn-light btn-outline-secondary mx-1">
 							<a href="${pageContext.request.contextPath}/GroupeContact/${Groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
 								<i class="fas fa-users"></i> Afficher Contacts
 							</a>

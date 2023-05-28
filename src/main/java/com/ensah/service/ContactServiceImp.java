@@ -23,7 +23,6 @@ public class ContactServiceImp implements IContactService{
 
     @Override
     public void modifierContact(Contact cContact) {
-        //cContact.setGrpC(cContact.getGrpC());
         contactDao.save(cContact);
     }
 

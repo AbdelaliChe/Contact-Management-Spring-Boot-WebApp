@@ -46,12 +46,12 @@
 						<td>
 							<button type="button" class="btn btn-primary me-2 text-truncate" data-mdb-ripple-color="dark">
 								<a href="${pageContext.request.contextPath}/affectationForm/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
-									<i class="fas fa-users"></i> Affecter Groupe
+									<i class="fas fa-users"></i>  ${contact.grpC.nom}
 								</a>
 							</button>
 						</td>
 						<td>
-							<button type="button" class="btn btn-light btn-outline-secondary mx-1" data-mdb-ripple-color="dark">
+							<button type="button" class="btn btn-light text-truncate btn-outline-secondary mx-1" data-mdb-ripple-color="dark">
 								<a href="${pageContext.request.contextPath}/modifierForm/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
 									<i class="fas fa-edit"></i> Modifier
 								</a>

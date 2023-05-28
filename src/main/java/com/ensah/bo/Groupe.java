@@ -19,6 +19,7 @@ public class Groupe {
     @OneToMany(mappedBy = "grpC", cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
     private List<Contact> contact = new ArrayList<Contact>();
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o)

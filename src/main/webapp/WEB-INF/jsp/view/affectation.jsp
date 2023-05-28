@@ -2,31 +2,36 @@
 <%@ include file="header.jsp" %>
 
 <div class="container p-4">
-
 	<div class="d-flex justify-content-between align-items-end mb-3">
 		<h1 id="title">Affecter un Contact à un Groupe</h1>
 		<div>
 			<button class="btn btn-dark">
 				<a href="${pageContext.request.contextPath}/afficherGroupes" class="text-reset text-decoration-none text-truncate">
-					<i class="fas fa-list"></i> Afficher Groupes
+					<i class="fas fa-users"></i> Afficher Groupes
 				</a>
 			</button>
 		</div>
 	</div>
 	<div>
-		<c:if test="${infoMsg != null}">
-			<div class="alert alert-success" role="alert">${infoMsg}</div>
-		</c:if>
-		<c:if test="${errorMsg != null}">
-			<div class="alert alert-danger" role="alert">${errorMsg}</div>
-		</c:if>
+		<form action="/affecterContactGrp" method="POST" modelAttribute="contactModel">
 
-		<f:form action="/affecterContactGrp" method="POST" modelAttribute="contactModel">
 			<input type="hidden" name="idContact" value="${contactModel.idContact}"/>
 			<div class="form-group row mb-3">
-				<label class="col-sm-2 col-form-label">Nom</label>
+				<label class="col-sm-2 col-form-label">Contact</label>
 				<div class="col-sm-10">
-					<input path="nomPrenom" type="text" class="form-control" value="${contactModel.nom} ${contactModel.prenom}" disabled/>
+					<input path="nom" type="text" class="form-control" value="${contactModel.nom} ${contactModel.prenom}" disabled/>
+				</div>
+			</div>
+
+			<div class="form-group row mb-3">
+				<label class="col-sm-2 col-form-label">Numeros Telephone</label>
+				<div class="col-sm-10 d-flex">
+					<div class="col me-2">
+						<input path="telephonePeronnel" type="text" class="form-control" value="Personnel: ${contactModel.telephonePeronnel}" disabled/>
+					</div>
+					<div class="col ms-2">
+						<input path="telephoneProfessionel" type="text" class="form-control" value=" Professionelle: ${contactModel.telephoneProfessionel}" disabled/>
+					</div>
 				</div>
 			</div>
 
@@ -36,9 +41,8 @@
 					<c:if test="${not empty listGroupes}">
 						<c:forEach items="${listGroupes}" var="groupe">
 							<label class="list-group-item">
-								<input class="form-check-input me-1" type="radio" name="GroupContactId" value="${groupe.nom}" ${contactModel.grpC == groupe ? 'checked' : ''}>
-									${groupe.nom}
-								<input type="hidden" name="groupId" value="${groupe.idGroupe}" />
+								<input class="form-check-input me-1" type="radio" name="grpC" value="${groupe.idGroupe}"
+									${contactModel.grpC == groupe ? 'checked' : ''}> ${groupe.nom}
 							</label>
 						</c:forEach>
 					</c:if>
@@ -48,14 +52,16 @@
 			<div class="row">
 				<div class="col-sm-10 offset-sm-2 d-flex justify-content-end">
 					<div>
-						<button type="submit" class="btn btn-primary"><i class="fa fa-users text-light"></i> Affecter</button>
-						<button type="reset" class="btn btn-outline-primary">
-							<i class="fas fa-undo"></i> Réinitialiser
+						<button type="submit" class="btn btn-primary"><i class="fa fa-user-plus text-light"></i> Affecter</button>
+						<button type="button" class="btn btn-danger text-truncate">
+							<a href="${pageContext.request.contextPath}/supprimerAffectation/${contactModel.idContact}" class="text-reset text-decoration-none text-truncate">
+								<i class="fas fa-trash"></i> Supprimer Affectation
+							</a>
 						</button>
 					</div>
 				</div>
 			</div>
-		</f:form>
+		</form>
 	</div>
 </div>
 </body>

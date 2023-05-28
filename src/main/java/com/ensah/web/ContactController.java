@@ -62,7 +62,16 @@ public class ContactController {
 
     @GetMapping("/supprimerContact/{id}")
     public String supprimerContact(@PathVariable Long id) {
+
+        Contact cnt = contactService.getContactById(id);
+        Groupe grp = cnt.getGrpC();
+        if(grp!= null){
+            grp.getContact().remove(cnt);
+            groupeService.modifierGroupe(grp);
+        }
+
         contactService.supprimerContact(id);
+
         return "redirect:/afficherContacts";
     }
 
@@ -87,29 +96,45 @@ public class ContactController {
 
     @RequestMapping("/affectationForm/{id}")
     public String affectationForm(Model model, @PathVariable Long id) {
+
         Contact cnt = contactService.getContactById(id);
         model.addAttribute("contactModel", cnt);
         model.addAttribute("listGroupes", groupeService.afficherGroupe());
         return "affectation";
+
     }
 
     @PostMapping("/affecterContactGrp")
-    public String affecterContactGrp(@Valid @ModelAttribute("contactModel") Contact contact,
-                                     @RequestParam("groupId") Long groupId,
-                                     BindingResult bindingResult, ModelMap model) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("errorMsg", "Les données sont invalides.");
-            LOGGER.warn("Erreur de validation du formulaire");
-        } else {
-            Groupe grp = groupeService.getGroupeById(groupId);
-            contact.setGrpC(grp);
-            contactService.modifierContact(contact);
-            model.addAttribute("infoMsg", "Contact modifié avec succès");
+    public String affecterContactGrp(@RequestParam("grpC") Long idGroupe,
+                                     @RequestParam("idContact") Long idContact) {
+
+        Contact cnt = contactService.getContactById(idContact);
+        if(idGroupe == null){
+            cnt.setGrpC(null);
         }
-        return "affectation";
+        else{
+            Groupe grp = groupeService.getGroupeById(idGroupe);
+            cnt.setGrpC(grp);
+            contactService.modifierContact(cnt);
+        }
+
+        return "redirect:/afficherContacts";
     }
 
+    @RequestMapping("/supprimerAffectation/{idContact}")
+    public String supprimerAffectation(@PathVariable("idContact") Long idContact) {
 
+        Contact cnt = contactService.getContactById(idContact);
+        Groupe grp = cnt.getGrpC();
+        if(grp!= null){
+            grp.getContact().remove(cnt);
+            groupeService.modifierGroupe(grp);
+            cnt.setGrpC(null);
+        }
+        contactService.modifierContact(cnt);
+
+        return "redirect:/afficherContacts";
+    }
 
     @GetMapping("/rechercherNomContact")
     public String rechercherContactNom(Model model) {
