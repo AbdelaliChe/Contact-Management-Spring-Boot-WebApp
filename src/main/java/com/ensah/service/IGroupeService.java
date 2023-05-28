@@ -20,5 +20,7 @@ public interface IGroupeService {
 
     public Groupe getGroupeByNom(String nom);
 
+    public void creeGroupebyContactNom(Contact contact);
+
 
 }

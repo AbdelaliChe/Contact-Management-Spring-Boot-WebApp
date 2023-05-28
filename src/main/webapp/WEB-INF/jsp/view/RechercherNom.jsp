@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ include file="header.jsp" %>
-<div class="container p-5">
+<div class="container p-4">
 
 
 	<div class="d-flex justify-content-between align-items-end mb-5">
@@ -55,6 +55,7 @@
 					<th>Email Personnel</th>
 					<th>Email Professionnel</th>
 					<th>Genre</th>
+					<th>Groupe</th>
 					<th>Modifier</th>
 					<th>Supprimer</th>
 				</tr>
@@ -72,7 +73,14 @@
 							<td><c:out value="${contact.emailProfessionel}"></c:out></td>
 							<td><c:out value="${contact.genre}"></c:out></td>
 							<td>
-								<button type="button" class="btn btn-light btn-outline-secondary me-2 text-truncate" data-mdb-ripple-color="dark">
+								<button type="button" class="btn btn-primary me-2 text-truncate" data-mdb-ripple-color="dark">
+									<a href="${pageContext.request.contextPath}/affectationForm/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
+										<i class="fas fa-users"></i>  ${contact.grpC.nom}
+									</a>
+								</button>
+							</td>
+							<td>
+								<button type="button" class="btn btn-light text-truncate btn-outline-secondary mx-1" data-mdb-ripple-color="dark">
 									<a href="${pageContext.request.contextPath}/modifierForm/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
 										<i class="fas fa-edit"></i> Modifier
 									</a>
@@ -85,7 +93,7 @@
 									</a>
 								</button>
 							</td>
-							</tr>
+						</tr>
 					</c:forEach>
 				</tbody>
 			</table>

@@ -18,23 +18,21 @@ public class Contact {
     private String prenom;
 
     @NotBlank(message = "champs important!")
+    @Column(unique=true)
     @Pattern(regexp = "^06\\d{8}$", message = "numero de telphone commence par 06 + 8 chiffres")
     private String telephonePeronnel;
 
     @Pattern(regexp = "^06\\d{8}$", message = "numero de telphone commence par 06 + 8 chiffres")
     private String telephoneProfessionel;
 
-    @NotBlank(message = "champs important!")
     private String adresse;
 
-    @Email(message = "Entrer un email personnel")
-    @NotBlank(message = "champs important!")
+    @Email(message = "Entrer un email personnel valide")
     private String emailPeronnel;
 
-    @Email(message = "Entrer un email professionel")
+    @Email(message = "Entrer un email professionel valide")
     private String emailProfessionel;
 
-    @NotBlank(message = "champs important!")
     private String genre;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})

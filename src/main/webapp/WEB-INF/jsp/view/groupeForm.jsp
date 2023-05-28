@@ -1,7 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ include file="header.jsp" %>
-<div class="container" style="padding: 20px;">
-
-
+<div class="container p-4">
 
 
 	<div class="d-flex justify-content-between align-items-end mb-5">

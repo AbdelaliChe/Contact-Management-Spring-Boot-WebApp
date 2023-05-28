@@ -32,11 +32,15 @@ public class GroupeServiceImp implements IGroupeService{
 
     @Override
     public void modifierGroupe(Groupe gGroupe) {
-
-        for (Contact contact : gGroupe.getContact()) {
-            contact.setGrpC(gGroupe);
+        try {
+            for (Contact contact : gGroupe.getContact()) {
+                contact.setGrpC(gGroupe);
+            }
+            grouprDao.save(gGroupe);
+        }catch (DataIntegrityViolationException ex) {
+            LOGGER.error("Integrity constraint violation occurred: " + ex.getMessage());
+            throw ex;
         }
-        grouprDao.save(gGroupe);
 
     }
 
@@ -64,4 +68,18 @@ public class GroupeServiceImp implements IGroupeService{
     public Groupe getGroupeByNom(String nom) {
         return grouprDao.findByNom(nom);
     }
+
+    @Override
+    public void creeGroupebyContactNom(Contact contact) {
+        Groupe grp = getGroupeByNom(contact.getNom());
+        if(afficherGroupe().contains(grp)){
+            contact.setGrpC(grp);
+        }else {
+            Groupe grpNom = new Groupe();
+            grpNom.setNom(contact.getNom());
+            contact.setGrpC(grpNom);
+            creeGroupe(grpNom);
+        }
+    }
+
 }

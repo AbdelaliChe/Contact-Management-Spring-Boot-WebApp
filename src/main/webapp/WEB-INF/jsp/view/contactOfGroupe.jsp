@@ -45,7 +45,7 @@
 				<td>
 					<button type="button" class="btn btn-danger text-truncate">
 						<a href="${pageContext.request.contextPath}/supprimerContactGroupe/${grpModel.idGroupe}/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
-							<i class="fas fa-trash"></i> Enlever du Groupe
+							<i class="fas fa-trash"></i> Enlever
 						</a>
 					</button>
 				</td>

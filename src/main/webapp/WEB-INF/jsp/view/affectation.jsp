@@ -3,7 +3,7 @@
 
 <div class="container p-4">
 	<div class="d-flex justify-content-between align-items-end mb-3">
-		<h1 id="title">Affecter un Contact à un Groupe</h1>
+		<h1 id="title">Affecter Contact à un Groupe</h1>
 		<div>
 			<button class="btn btn-dark">
 				<a href="${pageContext.request.contextPath}/afficherGroupes" class="text-reset text-decoration-none text-truncate">

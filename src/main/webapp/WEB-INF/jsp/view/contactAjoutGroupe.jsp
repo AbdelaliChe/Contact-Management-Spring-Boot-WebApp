@@ -3,7 +3,7 @@
 
 <div class="container p-4">
 	<div class="d-flex justify-content-between align-items-end mb-3">
-		<h1 id="title">Ajouter Contacts A: ${grpModel.nom}</h1>
+		<h1 id="title">Ajouter Contacts a: ${grpModel.nom}</h1>
 		<div>
 			<button class="btn btn-dark">
 				<a href="${pageContext.request.contextPath}/GroupeContact/${grpModel.idGroupe}" class="text-reset text-decoration-none text-truncate">
@@ -26,27 +26,33 @@
 				<th>Email Peronnel</th>
 				<th>Email Professionel</th>
 				<th>Genre</th>
+				<th>Groupe</th>
 				<th>Ajouter</th>
 
 			</tr>
 			</thead>
 			<tbody>
 			<c:if test="${not empty listContacts}">
-			<c:forEach items="${listContacts}" var="Contact">
-			<c:if test="${!grpModel.getContact().contains(Contact)}">
+			<c:forEach items="${listContacts}" var="contact">
+			<c:if test="${!grpModel.getContact().contains(contact)}">
 				<tr>
-					<td><c:out value="${Contact.idContact}"></c:out></td>
-					<td><c:out value="${Contact.nom}"></c:out></td>
-					<td><c:out value="${Contact.prenom}"></c:out></td>
-					<td><c:out value="${Contact.telephonePeronnel}"></c:out></td>
-					<td><c:out value="${Contact.telephoneProfessionel}"></c:out></td>
-					<td><c:out value="${Contact.adresse}"></c:out></td>
-					<td><c:out value="${Contact.emailPeronnel}"></c:out></td>
-					<td><c:out value="${Contact.emailProfessionel}"></c:out></td>
-					<td><c:out value="${Contact.genre}"></c:out></td>
+					<td><c:out value="${contact.idContact}"></c:out></td>
+					<td><c:out value="${contact.nom}"></c:out></td>
+					<td><c:out value="${contact.prenom}"></c:out></td>
+					<td><c:out value="${contact.telephonePeronnel}"></c:out></td>
+					<td><c:out value="${contact.telephoneProfessionel}"></c:out></td>
+					<td><c:out value="${contact.adresse}"></c:out></td>
+					<td><c:out value="${contact.emailPeronnel}"></c:out></td>
+					<td><c:out value="${contact.emailProfessionel}"></c:out></td>
+					<td><c:out value="${contact.genre}"></c:out></td>
+					<td>
+						<button type="button" class="btn btn-primary me-2 text-truncate" data-mdb-ripple-color="dark" disabled>
+							<i class="fas fa-users"></i>  ${contact.grpC.nom}
+						</button>
+					</td>
 					<td>
 						<button type="button" class="btn btn-primary me-2 text-truncate" data-mdb-ripple-color="dark">
-							<a href="${pageContext.request.contextPath}/contactDansGroupe/${grpModel.idGroupe}/${Contact.idContact}" class="text-reset text-decoration-none text-truncate">
+							<a href="${pageContext.request.contextPath}/contactDansGroupe/${grpModel.idGroupe}/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
 								<i class="fas fa-plus"></i> Ajouter
 							</a>
 						</button>

@@ -43,8 +43,15 @@ public class ContactController {
             model.addAttribute("errorMsg", "Les données sont invalides.");
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
-            contactService.creeContact(contact);
-            model.addAttribute("infoMsg", "Contact ajouté avec succès");
+            try{
+                contactService.creeContact(contact);
+                groupeService.creeGroupebyContactNom(contact);
+
+                model.addAttribute("infoMsg", "Contact ajouté avec succès");
+            }catch (DataIntegrityViolationException ex){
+                model.addAttribute("errorMsg", "Contact deja existe avec méme numero telephone(personnel)");
+                LOGGER.error("Erreur de unique num tele" + ex.getMessage());
+            }
         }
 
         return "form";
@@ -88,8 +95,13 @@ public class ContactController {
             model.addAttribute("errorMsg", "Les données sont invalides.");
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
-            contactService.modifierContact(contact);
-            model.addAttribute("infoMsg", "Contact modifié avec succès");
+            try {
+                contactService.modifierContact(contact);
+                model.addAttribute("infoMsg", "Contact modifié avec succès");
+            }catch (DataIntegrityViolationException ex){
+                model.addAttribute("errorMsg", "Contact deja existe avec méme numero telephone(personnel)");
+                LOGGER.error("Erreur de unique num tele" + ex.getMessage());
+            }
         }
         return "editForm";
     }
@@ -312,8 +324,13 @@ public class ContactController {
             model.addAttribute("errorMsg", "Les données sont invalides.");
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
+            try{
             groupeService.modifierGroupe(grp);
             model.addAttribute("infoMsg", "Groupe modifié avec succès");
+            }catch (DataIntegrityViolationException ex){
+                model.addAttribute("errorMsg", "Groupe deja existe");
+                LOGGER.error("Erreur de unique groupe" + ex.getMessage());
+            }
         }
         return "editFormGrp";
     }
