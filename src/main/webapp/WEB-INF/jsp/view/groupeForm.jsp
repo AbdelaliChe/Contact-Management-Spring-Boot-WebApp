@@ -8,7 +8,7 @@
 		<div>
 			<button class="btn btn-dark">
 				<a href="${pageContext.request.contextPath}/afficherGroupes" class="text-reset text-decoration-none text-truncate">
-					<i class="fas fa-list"></i> Afficher liste des groupes
+					<i class="fas fa-list me-2"></i>Afficher liste des groupes
 				</a>
 			</button>
 		</div>
@@ -37,9 +37,9 @@
 				<div class="row">
 					<div class="col-sm-10 offset-sm-2 d-flex justify-content-end">
 						<div>
-							<button type="submit" class="btn btn-primary"><i class="fa fa-users text-light"></i> Ajouter un Groupe</button>
+							<button type="submit" class="btn btn-primary"><i class="fa fa-users text-light me-2"></i>Ajouter un Groupe</button>
 							<button type="reset" class="btn btn-outline-primary">
-								<i class="fas fa-undo"></i> Réinitialiser
+								<i class="fa fa-undo me-2"></i>Réinitialiser
 							</button>
 						</div>
 					</div>

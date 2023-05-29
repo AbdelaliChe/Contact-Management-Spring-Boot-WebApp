@@ -8,7 +8,7 @@
 		<div>
 			<button class="btn btn-dark">
 				<a href="${pageContext.request.contextPath}/afficherContacts" class="text-reset text-decoration-none text-truncate">
-					<i class="fas fa-list"></i> Liste des Contacts
+					<i class="fa fa-list me-2"></i>Liste des Contacts
 				</a>
 			</button>
 		</div>
@@ -105,7 +105,7 @@
 		    </div>
 				<div class="row">
 					<div class="col-sm-10 offset-sm-2 d-flex justify-content-end">
-							<button type="submit" class="btn btn-primary"><i class="fa fa-pen text-light"></i> Modifier le Contact</button>
+							<button type="submit" class="btn btn-primary"><i class="fa fa-pen text-light me-2"></i>Modifier le Contact</button>
 					</div>
 				</div>
 

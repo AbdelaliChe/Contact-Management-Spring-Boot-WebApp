@@ -55,8 +55,9 @@ public class GroupeServiceImp implements IGroupeService{
     }
 
     @Override
-    public List<Groupe> RechercheParNom(String nom) {
-        return groupeDao.findByNomContaining(nom);
+    public List<Groupe> RechercheParNom(Groupe grp) {
+
+        return groupeDao.findByNomContaining(grp.getNom());
     }
 
     @Override

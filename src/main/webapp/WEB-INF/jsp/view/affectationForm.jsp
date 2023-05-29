@@ -7,7 +7,7 @@
 		<div>
 			<button class="btn btn-dark">
 				<a href="${pageContext.request.contextPath}/afficherGroupes" class="text-reset text-decoration-none text-truncate">
-					<i class="fas fa-users"></i> Afficher Groupes
+					<i class="fa fa-users me-2"></i>Afficher Groupes
 				</a>
 			</button>
 		</div>
@@ -52,10 +52,12 @@
 			<div class="row">
 				<div class="col-sm-10 offset-sm-2 d-flex justify-content-end">
 					<div>
-						<button type="submit" class="btn btn-primary"><i class="fa fa-user-plus text-light"></i> Affecter</button>
+						<button type="submit" class="btn btn-primary">
+							<i class="fa fa-user-plus text-light me-2"></i>Affecter
+						</button>
 						<button type="button" class="btn btn-danger text-truncate">
 							<a href="${pageContext.request.contextPath}/supprimerAffectation/${contactModel.idContact}" class="text-reset text-decoration-none text-truncate">
-								<i class="fas fa-trash"></i> Supprimer Affectation
+								<i class="fa fa-trash me-2"></i>Supprimer Affectation
 							</a>
 						</button>
 					</div>

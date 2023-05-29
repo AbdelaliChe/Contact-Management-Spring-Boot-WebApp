@@ -153,7 +153,7 @@ public class ContactController {
             model.addAttribute("errorMsg", "Les données sont invalides.");
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
-            List<Contact> contactR = contactService.RechercheParNom(contact.getNom());
+            List<Contact> contactR = contactService.RechercheParNom(contact);
             if (contactR.isEmpty()) {
                 model.addAttribute("errorMsg", "Aucun contact trouvé");
             } else {
@@ -283,7 +283,7 @@ public class ContactController {
             model.addAttribute("errorMsg", "Les données sont invalides.");
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
-            List<Groupe> groupeR=groupeService.RechercheParNom(grp.getNom());
+            List<Groupe> groupeR=groupeService.RechercheParNom(grp);
             if (groupeR.isEmpty()) {
                 model.addAttribute("errorMsg", "Aucun groupe trouvé");
             } else {

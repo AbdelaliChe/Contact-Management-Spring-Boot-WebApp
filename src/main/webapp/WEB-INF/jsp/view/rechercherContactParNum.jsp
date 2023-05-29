@@ -8,7 +8,7 @@
 		<div>
 			<button class="btn btn-dark">
 				<a href="${pageContext.request.contextPath}/rechercherContactParNom" class="text-reset text-decoration-none text-truncate">
-					<i class="fas fa-user"></i> Par Nom
+					<i class="fa fa-user me-2"></i>Par Nom
 				</a>
 			</button>
 		</div>
@@ -33,7 +33,7 @@
 						<f:errors path="telephone" class="text-danger" />
 					</div>
 					<button type="submit" class="btn btn-primary">
-						<i class="fas fa-search"></i>
+						<i class="fa fa-search"></i>
 					</button>
 				</div>
 			</div>
@@ -42,63 +42,46 @@
 	</div>
 
 	<c:if test="${not empty contactR}">
-	<div>
-		<div class="table-responsive">
-			<table class="table align-middle mb-0 bg-white">
-				<thead class="bg-light">
-				<tr>
-					<th>Id</th>
-					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Téléphone Personnel</th>
-					<th>Téléphone Professionnel</th>
-					<th>Adresse</th>
-					<th>Email Personnel</th>
-					<th>Email Professionnel</th>
-					<th>Genre</th>
-					<th>Groupe</th>
-					<th>Modifier</th>
-					<th>Supprimer</th>
-				</tr>
-				</thead>
-				<tbody>
-						<tr>
-							<td><c:out value="${contactR.idContact}"></c:out></td>
-							<td><c:out value="${contactR.nom}"></c:out></td>
-							<td><c:out value="${contactR.prenom}"></c:out></td>
-							<td><c:out value="${contactR.telephonePersonnel}"></c:out></td>
-							<td><c:out value="${contactR.telephoneProfessionel}"></c:out></td>
-							<td><c:out value="${contactR.adresse}"></c:out></td>
-							<td><c:out value="${contactR.emailPersonnel}"></c:out></td>
-							<td><c:out value="${contactR.emailProfessionel}"></c:out></td>
-							<td><c:out value="${contactR.genre}"></c:out></td>
-							<td>
-								<button type="button" class="btn btn-primary me-2 text-truncate" data-mdb-ripple-color="dark">
-									<a href="${pageContext.request.contextPath}/affectationForm/${contactR.idContact}" class="text-reset text-decoration-none text-truncate">
-										<i class="fas fa-users"></i>  ${contactR.grpC.nom}
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-header d-flex justify-content-center align-items-center">
+							<h5 class="fw-bold">${contactR.nom} ${contactR.prenom}</h5>
+						</div>
+						<div class="card-body">
+							<ul class="list-unstyled">
+								<li class="border-bottom pb-2 mb-2 fw-bold"><i class="fa fa-phone me-2"></i>${contactR.telephonePersonnel}</li>
+								<li class="border-bottom pb-2 mb-2 fw-bold"><i class="fa fa-phone-volume me-2"></i>${contactR.telephoneProfessionel}</li>
+								<li class="border-bottom pb-2 mb-2 fw-bold"><i class="fa fa-map-marker-alt me-2"></i>${contactR.adresse}</li>
+								<li class="border-bottom pb-2 mb-2 fw-bold"><i class="fa fa-envelope me-2"></i>${contactR.emailPersonnel}</li>
+								<li class="border-bottom pb-2 mb-2 fw-bold"><i class="fa fa-envelope-circle-check me-2"></i>${contactR.emailProfessionel}</li>
+								<li class="fw-bold"><i class="fas fa-venus-mars me-2"></i>${contactR.genre}</li>
+							</ul>
+						</div>
+						<div class="card-footer bg-transparent d-flex justify-content-between h-100">
+							<button type="button" class="btn btn-primary me-2" data-mdb-ripple-color="dark">
+								<a href="${pageContext.request.contextPath}/affectationForm/${contactR.idContact}" class="text-reset text-decoration-none">
+									<i class="fas fa-users"></i> ${contactR.grpC.nom}
+								</a>
+							</button>
+							<div>
+								<button type="button" class="btn btn-light btn-outline-secondary me-2" data-mdb-ripple-color="dark">
+									<a href="${pageContext.request.contextPath}/modifierContactForm/${contactR.idContact}" class="text-reset text-decoration-none">
+										<i class="fas fa-edit"></i>
 									</a>
 								</button>
-							</td>
-							<td>
-								<button type="button" class="btn btn-light text-truncate btn-outline-secondary mx-1" data-mdb-ripple-color="dark">
-									<a href="${pageContext.request.contextPath}/modifierContactForm/${contactR.idContact}" class="text-reset text-decoration-none text-truncate">
-										<i class="fas fa-edit"></i> Modifier
+								<button type="button" class="btn btn-danger" data-mdb-ripple-color="dark">
+									<a href="${pageContext.request.contextPath}/supprimerContact/${contactR.idContact}" class="text-reset text-decoration-none">
+										<i class="fas fa-trash"></i>
 									</a>
 								</button>
-							</td>
-							<td>
-								<button type="button" class="btn btn-danger text-truncate">
-									<a href="${pageContext.request.contextPath}/supprimerContact/${contactR.idContact}" class="text-reset text-decoration-none text-truncate">
-										<i class="fas fa-trash"></i> Supprimer
-									</a>
-								</button>
-							</td>
-						</tr>
-				</tbody>
-			</table>
+							</div>
+						</div>
+					</div>
+				</div>
 		</div>
-		</c:if>
-	</div>
+	</c:if>
+</div>
 </div>
 </body>
 </html>

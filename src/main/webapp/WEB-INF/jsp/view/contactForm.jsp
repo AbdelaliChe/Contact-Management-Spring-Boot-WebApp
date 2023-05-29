@@ -9,7 +9,7 @@
 		<div>
 			<button class="btn btn-dark">
 				<a href="${pageContext.request.contextPath}/afficherContacts" class="text-reset text-decoration-none text-truncate">
-				<i class="fas fa-list"></i> Afficher Mes Contacts
+				<i class="fa fa-list me-2"></i>Afficher Mes Contacts
 				</a>
 			</button>
 		</div>
@@ -102,9 +102,11 @@
 			<div class="row">
 				<div class="col-sm-10 offset-sm-2 d-flex justify-content-end">
 					<div>
-					<button type="submit" class="btn btn-primary"><i class="fa fa-user-plus text-light"></i> Ajouter un Contact</button>
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-user-plus text-light me-2"></i>Ajouter un Contact
+					</button>
 					<button type="reset" class="btn btn-outline-primary">
-						<i class="fas fa-undo"></i> Réinitialiser
+						<i class="fa fa-undo me-2"></i>Réinitialiser
 					</button>
 					</div>
 				</div>
@@ -112,8 +114,6 @@
 
 			</f:form>
 		</div>
-
-
 	</div>
 </body>
 </html>

@@ -40,15 +40,6 @@ public class ContactServiceImp implements IContactService{
         }
     }
 
-    @Override
-    public void modifierContactInfo(Contact cContact) {
-        try {
-            contactDao.modifierContactInfos(cContact);
-        }catch (DataIntegrityViolationException ex) {
-            LOGGER.error("Integrity constraint violation occurred: " + ex.getMessage());
-            throw ex;
-        }
-    }
 
     @Override
     public List<Contact> afficherContactsParOrdreNom() {
@@ -60,9 +51,10 @@ public class ContactServiceImp implements IContactService{
         contactDao.delete(getContactById(id));
     }
 
-    @Override
-    public List<Contact> RechercheParNom(String nom) {
-        return contactDao.findByNomPhonetique(nom);
+
+    public List<Contact> RechercheParNom(Contact contact) {
+
+        return contactDao.findByNomPhonetique(contact.getNom());
     }
 
     @Override

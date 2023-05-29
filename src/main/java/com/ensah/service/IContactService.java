@@ -9,13 +9,12 @@ public interface IContactService {
     public void creeContact(Contact cContact);
 
     public void modifierContact(Contact cContact);
-    public void  modifierContactInfo(Contact cContact);
 
     public List<Contact> afficherContactsParOrdreNom();
 
     public void supprimerContact(Long id);
 
-    public List<Contact> RechercheParNom(String nom);
+    public List<Contact> RechercheParNom(Contact contact);
 
     public Contact getContactById(Long id);
 

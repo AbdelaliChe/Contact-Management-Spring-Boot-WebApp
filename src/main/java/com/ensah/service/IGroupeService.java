@@ -14,7 +14,7 @@ public interface IGroupeService {
 
     public void supprimerGroupe(Long id);
 
-    public List<Groupe> RechercheParNom(String nom);
+    public List<Groupe> RechercheParNom(Groupe grp);
 
     public Groupe getGroupeById(Long id);
 
