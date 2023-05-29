@@ -7,7 +7,7 @@
 		<h1 id="title">Rechercher Contacts Par Num-Tele</h1>
 		<div>
 			<button class="btn btn-dark">
-				<a href="${pageContext.request.contextPath}/rechercherNomContact" class="text-reset text-decoration-none text-truncate">
+				<a href="${pageContext.request.contextPath}/rechercherContactParNom" class="text-reset text-decoration-none text-truncate">
 					<i class="fas fa-user"></i> Par Nom
 				</a>
 			</button>
@@ -24,7 +24,7 @@
 
 	<div>
 
-		<f:form action="/ContactrechercherNum" method="POST">
+		<f:form action="/NumContactRechercher" method="POST">
 			<div class="form-group row mb-5">
 				<div class="input-group">
 					<div class="form-outline flex-grow-1">
@@ -66,10 +66,10 @@
 							<td><c:out value="${contactR.idContact}"></c:out></td>
 							<td><c:out value="${contactR.nom}"></c:out></td>
 							<td><c:out value="${contactR.prenom}"></c:out></td>
-							<td><c:out value="${contactR.telephonePeronnel}"></c:out></td>
+							<td><c:out value="${contactR.telephonePersonnel}"></c:out></td>
 							<td><c:out value="${contactR.telephoneProfessionel}"></c:out></td>
 							<td><c:out value="${contactR.adresse}"></c:out></td>
-							<td><c:out value="${contactR.emailPeronnel}"></c:out></td>
+							<td><c:out value="${contactR.emailPersonnel}"></c:out></td>
 							<td><c:out value="${contactR.emailProfessionel}"></c:out></td>
 							<td><c:out value="${contactR.genre}"></c:out></td>
 							<td>
@@ -81,7 +81,7 @@
 							</td>
 							<td>
 								<button type="button" class="btn btn-light text-truncate btn-outline-secondary mx-1" data-mdb-ripple-color="dark">
-									<a href="${pageContext.request.contextPath}/modifierForm/${contactR.idContact}" class="text-reset text-decoration-none text-truncate">
+									<a href="${pageContext.request.contextPath}/modifierContactForm/${contactR.idContact}" class="text-reset text-decoration-none text-truncate">
 										<i class="fas fa-edit"></i> Modifier
 									</a>
 								</button>

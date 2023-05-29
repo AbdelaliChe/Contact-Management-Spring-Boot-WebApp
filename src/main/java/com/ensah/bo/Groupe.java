@@ -17,31 +17,16 @@ public class Groupe {
     private String nom;
 
     @OneToMany(mappedBy = "grpC", cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
-    private List<Contact> contact = new ArrayList<Contact>();
+    private List<Contact> contacts = new ArrayList<Contact>();
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Groupe)) {
-            return false;
-        }
-        return idGroupe != null && idGroupe.equals(((Groupe) o).getIdGroupe());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 
     public Groupe() {
     }
 
-    public Groupe(Long idGroupe, String nom, List<Contact> contact) {
+    public Groupe(Long idGroupe, String nom, List<Contact> contacts) {
         this.idGroupe = idGroupe;
         this.nom = nom;
-        this.contact = contact;
+        this.contacts = contacts;
     }
 
     public Long getIdGroupe() {
@@ -60,12 +45,12 @@ public class Groupe {
         this.nom = nom;
     }
 
-    public List<Contact> getContact() {
-        return contact;
+    public List<Contact> getContacts() {
+        return contacts;
     }
 
-    public void setContact(List<Contact> contact) {
-        this.contact = contact;
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 
     @Override
@@ -74,7 +59,7 @@ public class Groupe {
                 "idGroupe=" + idGroupe +
                 ", nom='" + nom + '\'' +
                 ", contact= '}";
-        for(Contact c:contact){
+        for(Contact c:contacts){
             Strings+=c.toString();
         }
         return Strings;

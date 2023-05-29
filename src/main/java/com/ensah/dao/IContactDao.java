@@ -12,8 +12,11 @@ public interface IContactDao extends JpaRepository<Contact, Long> {
 
     List<Contact> findByOrderByNomAsc();
 
-    Contact findBytelephonePeronnel(String num);
+    //Contact findBytelephonePeronnel(String num);
+    //Contact findBytelephoneProfessionel(String num);
 
-    Contact findBytelephoneProfessionel(String num);
+    @Query(value = "SELECT * FROM contact WHERE telephone_personnel = :num OR telephone_professionel = :num", nativeQuery = true)
+    Contact findByNumTelephone(String num);
+
 
 }

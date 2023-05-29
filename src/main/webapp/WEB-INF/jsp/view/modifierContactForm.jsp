@@ -48,8 +48,8 @@
 				<label class="col-sm-2 col-form-label">Numeros Telephone</label>
 				<div class="col-sm-10 d-flex">
 					<div class="col me-2">
-						<f:input path="telephonePeronnel" type="text" class="form-control" placeholder="Telephone Peronnel" />
-						<f:errors path="telephonePeronnel" class="text-danger" />
+						<f:input path="telephonePersonnel" type="text" class="form-control" placeholder="Telephone Peronnel" />
+						<f:errors path="telephonePersonnel" class="text-danger" />
 					</div>
 					<div class="col ms-2">
 						<f:input path="telephoneProfessionel" type="text" class="form-control" placeholder="Telephone Professionel" />
@@ -62,8 +62,8 @@
 				<label class="col-sm-2 col-form-label">Emails</label>
 				<div class="col-sm-10 d-flex">
 					<div class="col me-2">
-						<f:input path="emailPeronnel" class="form-control" placeholder="Email Peronnel" />
-						<f:errors path="emailPeronnel" class="text-danger" />
+						<f:input path="emailPersonnel" class="form-control" placeholder="Email Peronnel" />
+						<f:errors path="emailPersonnel" class="text-danger" />
 					</div>
 					<div class="col ms-2">
 						<f:input path="emailProfessionel" class="form-control" placeholder="Email Professionel" />

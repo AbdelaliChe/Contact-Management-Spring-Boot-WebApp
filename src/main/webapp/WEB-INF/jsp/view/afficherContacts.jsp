@@ -6,14 +6,14 @@
 		<h1 id="title">Mes Contacts</h1>
 		<div>
 			<button class="btn btn-dark">
-				<a href="${pageContext.request.contextPath}/afficherForm" class="text-reset text-decoration-none text-truncate">
+				<a href="${pageContext.request.contextPath}/contactForm" class="text-reset text-decoration-none text-truncate">
 			<i class="fas fa-plus"></i> Ajouter un Contact
 			</a>
 			</button>
 		</div>
 	</div>
 	<div class="table-responsive">
-		<table class="table align-middle mb-0 bg-white">
+		<table class="table align-middle mb-0 bg-white table-hover">
 			<thead class="bg-light">
 			<tr>
 				<th>Id</th>
@@ -37,10 +37,10 @@
 						<td><c:out value="${contact.idContact}"></c:out></td>
 						<td><c:out value="${contact.nom}"></c:out></td>
 						<td><c:out value="${contact.prenom}"></c:out></td>
-						<td><c:out value="${contact.telephonePeronnel}"></c:out></td>
+						<td><c:out value="${contact.telephonePersonnel}"></c:out></td>
 						<td><c:out value="${contact.telephoneProfessionel}"></c:out></td>
 						<td><c:out value="${contact.adresse}"></c:out></td>
-						<td><c:out value="${contact.emailPeronnel}"></c:out></td>
+						<td><c:out value="${contact.emailPersonnel}"></c:out></td>
 						<td><c:out value="${contact.emailProfessionel}"></c:out></td>
 						<td><c:out value="${contact.genre}"></c:out></td>
 						<td>
@@ -52,7 +52,7 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-light text-truncate btn-outline-secondary mx-1" data-mdb-ripple-color="dark">
-								<a href="${pageContext.request.contextPath}/modifierForm/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
+								<a href="${pageContext.request.contextPath}/modifierContactForm/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
 									<i class="fas fa-edit"></i> Modifier
 								</a>
 							</button>

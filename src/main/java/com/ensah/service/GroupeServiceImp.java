@@ -17,13 +17,13 @@ public class GroupeServiceImp implements IGroupeService{
 
     protected final Logger LOGGER = Logger.getLogger(getClass());
     @Autowired
-    IGroupeDao grouprDao;
+    IGroupeDao groupeDao;
 
 
     @Override
     public void creeGroupe(Groupe gGroupe) {
         try {
-            grouprDao.save(gGroupe);
+            groupeDao.save(gGroupe);
         } catch (DataIntegrityViolationException ex) {
             LOGGER.error("Integrity constraint violation occurred: " + ex.getMessage());
             throw ex;
@@ -33,10 +33,10 @@ public class GroupeServiceImp implements IGroupeService{
     @Override
     public void modifierGroupe(Groupe gGroupe) {
         try {
-            for (Contact contact : gGroupe.getContact()) {
+            for (Contact contact : gGroupe.getContacts()) {
                 contact.setGrpC(gGroupe);
             }
-            grouprDao.save(gGroupe);
+            groupeDao.save(gGroupe);
         }catch (DataIntegrityViolationException ex) {
             LOGGER.error("Integrity constraint violation occurred: " + ex.getMessage());
             throw ex;
@@ -46,31 +46,31 @@ public class GroupeServiceImp implements IGroupeService{
 
     @Override
     public List<Groupe> afficherGroupe() {
-        return grouprDao.findAll();
+        return groupeDao.findAll();
     }
 
     @Override
     public void supprimerGroupe(Long id) {
-        grouprDao.delete(getGroupeById(id));
+        groupeDao.delete(getGroupeById(id));
     }
 
     @Override
     public List<Groupe> RechercheParNom(String nom) {
-        return grouprDao.findByNomContaining(nom);
+        return groupeDao.findByNomContaining(nom);
     }
 
     @Override
     public Groupe getGroupeById(Long id) {
-        return grouprDao.findById(id).get();
+        return groupeDao.findById(id).get();
     }
 
     @Override
     public Groupe getGroupeByNom(String nom) {
-        return grouprDao.findByNom(nom);
+        return groupeDao.findByNom(nom);
     }
 
     @Override
-    public void creeGroupebyContactNom(Contact contact) {
+    public void creeGroupeByContactNom(Contact contact) {
         Groupe grp = getGroupeByNom(contact.getNom());
         if(afficherGroupe().contains(grp)){
             contact.setGrpC(grp);
@@ -79,6 +79,27 @@ public class GroupeServiceImp implements IGroupeService{
             grpNom.setNom(contact.getNom());
             contact.setGrpC(grpNom);
             creeGroupe(grpNom);
+        }
+    }
+
+    @Override
+    public void supprimerAffectation(Contact contact) {
+        Groupe grp = contact.getGrpC();
+        if(grp!= null){
+            grp.getContacts().remove(contact);
+            modifierGroupe(grp);
+            contact.setGrpC(null);
+        }
+    }
+
+    @Override
+    public void ajouterAffectation(Contact contact,Long id) {
+        if(id == null){
+            contact.setGrpC(null);
+        }
+        else{
+            Groupe grp = getGroupeById(id);
+            contact.setGrpC(grp);
         }
     }
 

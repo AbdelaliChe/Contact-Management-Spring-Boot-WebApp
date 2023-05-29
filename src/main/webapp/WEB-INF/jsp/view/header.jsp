@@ -19,7 +19,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-primary px-3">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/afficherContacts">
 				<i class="fa fa-square-phone text-light fa-lg"></i> <span class="fw-bold">t-Contacts</span>
 			</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,12 +30,12 @@
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link"
-											href="${pageContext.request.contextPath}/afficherForm">Ajout Contact</a></li>
+											href="${pageContext.request.contextPath}/afficherFormContact">Ajout Contact</a></li>
 					<li class="nav-item"><a class="nav-link"
 											aria-current="page"
 											href="${pageContext.request.contextPath}/afficherContacts">Mes Contacts</a></li>
 					<li class="nav-item"><a class="nav-link"
-											href="${pageContext.request.contextPath}/rechercherNomContact">Rechercher Contact</a></li>
+											href="${pageContext.request.contextPath}/rechercherContactParNom">Rechercher Contact</a></li>
 					<li class="nav-item"><a class="nav-link"
 											href="${pageContext.request.contextPath}/groupeForm">Ajout Groupe</a></li>
 					<li class="nav-item"><a class="nav-link"

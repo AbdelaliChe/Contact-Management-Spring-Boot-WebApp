@@ -20,7 +20,7 @@ public class Contact {
     @NotBlank(message = "champs important!")
     @Column(unique=true)
     @Pattern(regexp = "^06\\d{8}$", message = "numero de telphone commence par 06 + 8 chiffres")
-    private String telephonePeronnel;
+    private String telephonePersonnel;
 
     @Pattern(regexp = "^06\\d{8}$", message = "numero de telphone commence par 06 + 8 chiffres")
     private String telephoneProfessionel;
@@ -28,7 +28,7 @@ public class Contact {
     private String adresse;
 
     @Email(message = "Entrer un email personnel valide")
-    private String emailPeronnel;
+    private String emailPersonnel;
 
     @Email(message = "Entrer un email professionel valide")
     private String emailProfessionel;
@@ -36,21 +36,21 @@ public class Contact {
     private String genre;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    @JoinColumn(name = "GroupContactId")
+    @JoinColumn(name = "contactGroupId")
     private Groupe grpC;
 
 
     public Contact() {
     }
 
-    public Contact(Long idContact, String nom, String prenom, String telephonePeronnel, String telephoneProfessionel, String adresse, String emailPeronnel, String emailProfessionel, String genre, Groupe contactGroupId) {
+    public Contact(Long idContact, String nom, String prenom, String telephonePersonnel, String telephoneProfessionel, String adresse, String emailPersonnel, String emailProfessionel, String genre) {
         this.idContact = idContact;
         this.nom = nom;
         this.prenom = prenom;
-        this.telephonePeronnel = telephonePeronnel;
+        this.telephonePersonnel = telephonePersonnel;
         this.telephoneProfessionel = telephoneProfessionel;
         this.adresse = adresse;
-        this.emailPeronnel = emailPeronnel;
+        this.emailPersonnel = emailPersonnel;
         this.emailProfessionel = emailProfessionel;
         this.genre = genre;
     }
@@ -61,10 +61,10 @@ public class Contact {
                 "idContact=" + idContact +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", telephonePeronnel='" + telephonePeronnel + '\'' +
+                ", telephonePersonnel='" + telephonePersonnel + '\'' +
                 ", telephoneProfessionel='" + telephoneProfessionel + '\'' +
                 ", adresse='" + adresse + '\'' +
-                ", emailPeronnel='" + emailPeronnel + '\'' +
+                ", emailPersonnel='" + emailPersonnel + '\'' +
                 ", emailProfessionel='" + emailProfessionel + '\'' +
                 ", genre='" + genre + '\'' ;
     }
@@ -93,12 +93,12 @@ public class Contact {
         this.prenom = prenom;
     }
 
-    public String getTelephonePeronnel() {
-        return telephonePeronnel;
+    public String getTelephonePersonnel() {
+        return telephonePersonnel;
     }
 
-    public void setTelephonePeronnel(String telephonePeronnel) {
-        this.telephonePeronnel = telephonePeronnel;
+    public void setTelephonePersonnel(String telephonePersonnel) {
+        this.telephonePersonnel = telephonePersonnel;
     }
 
     public String getTelephoneProfessionel() {
@@ -117,12 +117,12 @@ public class Contact {
         this.adresse = adresse;
     }
 
-    public String getEmailPeronnel() {
-        return emailPeronnel;
+    public String getEmailPersonnel() {
+        return emailPersonnel;
     }
 
-    public void setEmailPeronnel(String emailPeronnel) {
-        this.emailPeronnel = emailPeronnel;
+    public void setEmailPersonnel(String emailPersonnel) {
+        this.emailPersonnel = emailPersonnel;
     }
 
     public String getEmailProfessionel() {

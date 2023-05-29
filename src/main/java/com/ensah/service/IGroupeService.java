@@ -20,7 +20,10 @@ public interface IGroupeService {
 
     public Groupe getGroupeByNom(String nom);
 
-    public void creeGroupebyContactNom(Contact contact);
+    public void creeGroupeByContactNom(Contact contact);
 
+    public void supprimerAffectation(Contact contact);
+
+    public void ajouterAffectation(Contact contact,Long id);
 
 }

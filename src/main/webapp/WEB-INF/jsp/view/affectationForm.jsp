@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div>
-		<form action="/affecterContactGrp" method="POST" modelAttribute="contactModel">
+		<form action="/ContactaffecterGroupe" method="POST" modelAttribute="contactModel">
 
 			<input type="hidden" name="idContact" value="${contactModel.idContact}"/>
 			<div class="form-group row mb-3">
@@ -27,7 +27,7 @@
 				<label class="col-sm-2 col-form-label">Numeros Telephone</label>
 				<div class="col-sm-10 d-flex">
 					<div class="col me-2">
-						<input path="telephonePeronnel" type="text" class="form-control" value="Personnel: ${contactModel.telephonePeronnel}" disabled/>
+						<input path="telephonePersonnel" type="text" class="form-control" value="Personnel: ${contactModel.telephonePersonnel}" disabled/>
 					</div>
 					<div class="col ms-2">
 						<input path="telephoneProfessionel" type="text" class="form-control" value=" Professionelle: ${contactModel.telephoneProfessionel}" disabled/>

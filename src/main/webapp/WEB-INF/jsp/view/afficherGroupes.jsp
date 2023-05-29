@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div class="table-responsive">
-			<table class="table align-middle mb-0 bg-white">
+			<table class="table align-middle mb-0 bg-white table-hover">
 				<thead class="bg-light">
 			<tr>
 				<th>Id</th>
@@ -26,34 +26,34 @@
 			</thead>
 			<tbody>
 			<c:if test="${not empty listGroupes}">
-			<c:forEach items="${listGroupes}" var="Groupe">
+			<c:forEach items="${listGroupes}" var="groupe">
 				<tr>
-					<td><c:out value="${Groupe.idGroupe}"></c:out></td>
-					<td><c:out value="${Groupe.nom}"></c:out></td>
+					<td><c:out value="${groupe.idGroupe}"></c:out></td>
+					<td><c:out value="${groupe.nom}"></c:out></td>
 					<td>
 						<button type="button" class="btn btn-light btn-outline-secondary mx-1">
-							<a href="${pageContext.request.contextPath}/contactAjoutGroupe/${Groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
+							<a href="${pageContext.request.contextPath}/ContactsToAjouterGroupe/${groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
 								<i class="fas fa-user-plus"></i> Affecter Contacts
 							</a>
 						</button>
 					</td>
 					<td>
 						<button type="button" class="btn btn-light btn-outline-secondary mx-1">
-							<a href="${pageContext.request.contextPath}/GroupeContact/${Groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
+							<a href="${pageContext.request.contextPath}/afficherContactsOfGroupe/${groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
 								<i class="fas fa-users"></i> Afficher Contacts
 							</a>
 						</button>
 					</td>
 					<td>
 						<button type="button" class="btn btn-primary me-2 text-truncate">
-							<a href="${pageContext.request.contextPath}/modifierFormGrp/${Groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
+							<a href="${pageContext.request.contextPath}/modifierGrpForm/${groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
 								<i class="fas fa-edit"></i> Modifier
 							</a>
 						</button>
 					</td>
 					<td>
 						<button type="button" class="btn btn-danger text-truncate">
-							<a href="${pageContext.request.contextPath}/supprimerGroupe/${Groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
+							<a href="${pageContext.request.contextPath}/supprimerGroupe/${groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
 								<i class="fas fa-trash"></i> Supprimer
 							</a>
 						</button>

@@ -7,7 +7,7 @@
 		<h1 id="title">Rechercher Contacts Par Nom</h1>
 		<div>
 			<button class="btn btn-dark">
-				<a href="${pageContext.request.contextPath}/rechercherNumContact" class="text-reset text-decoration-none text-truncate">
+				<a href="${pageContext.request.contextPath}/rechercherContactParNum" class="text-reset text-decoration-none text-truncate">
 					<i class="fas fa-phone"></i> Par Numero de Telephone
 				</a>
 			</button>
@@ -24,7 +24,7 @@
 
 	<div>
 
-		<f:form action="/NomContactrechercher" method="POST" modelAttribute="contactModel">
+		<f:form action="/NomContactRechercher" method="POST" modelAttribute="contactModel">
 			<div class="form-group row mb-5">
 				<div class="input-group">
 					<div class="form-outline flex-grow-1">
@@ -66,10 +66,10 @@
 							<td><c:out value="${contact.idContact}"></c:out></td>
 							<td><c:out value="${contact.nom}"></c:out></td>
 							<td><c:out value="${contact.prenom}"></c:out></td>
-							<td><c:out value="${contact.telephonePeronnel}"></c:out></td>
+							<td><c:out value="${contact.telephonePersonnel}"></c:out></td>
 							<td><c:out value="${contact.telephoneProfessionel}"></c:out></td>
 							<td><c:out value="${contact.adresse}"></c:out></td>
-							<td><c:out value="${contact.emailPeronnel}"></c:out></td>
+							<td><c:out value="${contact.emailPersonnel}"></c:out></td>
 							<td><c:out value="${contact.emailProfessionel}"></c:out></td>
 							<td><c:out value="${contact.genre}"></c:out></td>
 							<td>
@@ -81,7 +81,7 @@
 							</td>
 							<td>
 								<button type="button" class="btn btn-light text-truncate btn-outline-secondary mx-1" data-mdb-ripple-color="dark">
-									<a href="${pageContext.request.contextPath}/modifierForm/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
+									<a href="${pageContext.request.contextPath}/modifierContactForm/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
 										<i class="fas fa-edit"></i> Modifier
 									</a>
 								</button>

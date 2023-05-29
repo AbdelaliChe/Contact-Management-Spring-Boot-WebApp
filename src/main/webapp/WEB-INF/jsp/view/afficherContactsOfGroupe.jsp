@@ -6,7 +6,7 @@
 		<h1 id="title">Contacts du Groupe: ${grpModel.nom}</h1>
 		<div>
 			<button class="btn btn-dark">
-				<a href="${pageContext.request.contextPath}/contactAjoutGroupe/${grpModel.idGroupe}" class="text-reset text-decoration-none text-truncate">
+				<a href="${pageContext.request.contextPath}/ContactsToAjouterGroupe/${grpModel.idGroupe}" class="text-reset text-decoration-none text-truncate">
 					<i class="fas fa-user-plus"></i> Ajouter autre Contacts
 				</a>
 			</button>
@@ -36,15 +36,15 @@
 				<td><c:out value="${contact.idContact}"></c:out></td>
 				<td><c:out value="${contact.nom}"></c:out></td>
 				<td><c:out value="${contact.prenom}"></c:out></td>
-				<td><c:out value="${contact.telephonePeronnel}"></c:out></td>
+				<td><c:out value="${contact.telephonePersonnel}"></c:out></td>
 				<td><c:out value="${contact.telephoneProfessionel}"></c:out></td>
 				<td><c:out value="${contact.adresse}"></c:out></td>
-				<td><c:out value="${contact.emailPeronnel}"></c:out></td>
+				<td><c:out value="${contact.emailPersonnel}"></c:out></td>
 				<td><c:out value="${contact.emailProfessionel}"></c:out></td>
 				<td><c:out value="${contact.genre}"></c:out></td>
 				<td>
 					<button type="button" class="btn btn-danger text-truncate">
-						<a href="${pageContext.request.contextPath}/supprimerContactGroupe/${grpModel.idGroupe}/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
+						<a href="${pageContext.request.contextPath}/supprimerContactOfGroupe/${grpModel.idGroupe}/${contact.idContact}" class="text-reset text-decoration-none text-truncate">
 							<i class="fas fa-trash"></i> Enlever
 						</a>
 					</button>

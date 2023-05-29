@@ -24,7 +24,7 @@
 
 
 
-			<f:form action="ajoutGroupe" method="POST" modelAttribute="grpModel">
+			<f:form action="ajouterGroupe" method="POST" modelAttribute="grpModel">
 				<div class="form-group row mb-3">
 					<label class="col-sm-2 col-form-label">Nom du groupe</label>
 					<div class="col-sm-10">

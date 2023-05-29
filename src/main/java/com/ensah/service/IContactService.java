@@ -1,6 +1,7 @@
 package com.ensah.service;
 
 import com.ensah.bo.Contact;
+import com.ensah.bo.Groupe;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface IContactService {
 
     public void modifierContact(Contact cContact);
 
-    public List<Contact> afficherContactsParOrdre();
+    public List<Contact> afficherContactsParOrdreNom();
 
     public void supprimerContact(Long id);
 
@@ -18,5 +19,11 @@ public interface IContactService {
     public Contact getContactById(Long id);
 
     public Contact RechercheParNum(String num);
+
+    public void supprimerAffectationCnt(Groupe grp);
+
+    public void ajouterContactsToGroupe(Groupe grp,Long id);
+
+    public void supprimerContactOfGroupe(Groupe grp,Long id);
 
 }

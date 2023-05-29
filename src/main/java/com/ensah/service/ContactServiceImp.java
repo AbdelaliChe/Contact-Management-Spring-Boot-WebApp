@@ -41,7 +41,7 @@ public class ContactServiceImp implements IContactService{
     }
 
     @Override
-    public List<Contact> afficherContactsParOrdre() {
+    public List<Contact> afficherContactsParOrdreNom() {
         return contactDao.findByOrderByNomAsc();
     }
 
@@ -62,7 +62,27 @@ public class ContactServiceImp implements IContactService{
 
     @Override
     public Contact RechercheParNum(String num) {
-        if(contactDao.findBytelephonePeronnel(num)!=null) return contactDao.findBytelephonePeronnel(num);
-        else return contactDao.findBytelephoneProfessionel(num);
+        return contactDao.findByNumTelephone(num);
     }
+
+    @Override
+    public void supprimerAffectationCnt(Groupe grp) {
+        for (Contact cnt : grp.getContacts()) {
+            cnt.setGrpC(null);
+            modifierContact(cnt);
+        }
+    }
+
+    @Override
+    public void ajouterContactsToGroupe(Groupe grp,Long id) {
+        grp.getContacts().add(getContactById(id));
+    }
+    @Override
+    public void supprimerContactOfGroupe(Groupe grp,Long id){
+        Contact cnt = getContactById(id);
+        grp.getContacts().remove(cnt);
+        cnt.setGrpC(null);
+        modifierContact(cnt);
+    }
+
 }
