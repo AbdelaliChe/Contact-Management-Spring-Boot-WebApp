@@ -9,6 +9,7 @@ public interface IContactService {
     public void creeContact(Contact cContact);
 
     public void modifierContact(Contact cContact);
+    public void  modifierContactInfo(Contact cContact);
 
     public List<Contact> afficherContactsParOrdreNom();
 

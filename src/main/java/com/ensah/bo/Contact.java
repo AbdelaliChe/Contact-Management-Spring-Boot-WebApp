@@ -43,7 +43,7 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(Long idContact, String nom, String prenom, String telephonePersonnel, String telephoneProfessionel, String adresse, String emailPersonnel, String emailProfessionel, String genre) {
+    public Contact(Long idContact, String nom, String prenom, String telephonePersonnel, String telephoneProfessionel, String adresse, String emailPersonnel, String emailProfessionel, String genre,Groupe grpC) {
         this.idContact = idContact;
         this.nom = nom;
         this.prenom = prenom;
@@ -53,6 +53,7 @@ public class Contact {
         this.emailPersonnel = emailPersonnel;
         this.emailProfessionel = emailProfessionel;
         this.genre = genre;
+        this.grpC = grpC;
     }
 
     @Override
@@ -66,7 +67,8 @@ public class Contact {
                 ", adresse='" + adresse + '\'' +
                 ", emailPersonnel='" + emailPersonnel + '\'' +
                 ", emailProfessionel='" + emailProfessionel + '\'' +
-                ", genre='" + genre + '\'' ;
+                ", genre='" + genre + '\''+
+                ", groupe='" + grpC.getNom() + '\'';
     }
 
     public Long getIdContact() {

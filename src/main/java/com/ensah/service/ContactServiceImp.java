@@ -41,6 +41,16 @@ public class ContactServiceImp implements IContactService{
     }
 
     @Override
+    public void modifierContactInfo(Contact cContact) {
+        try {
+            contactDao.modifierContactInfos(cContact);
+        }catch (DataIntegrityViolationException ex) {
+            LOGGER.error("Integrity constraint violation occurred: " + ex.getMessage());
+            throw ex;
+        }
+    }
+
+    @Override
     public List<Contact> afficherContactsParOrdreNom() {
         return contactDao.findByOrderByNomAsc();
     }

@@ -83,7 +83,7 @@
 				</div>
 			</div>
 
-				<div class="form-group row mb-3">
+			<div class="form-group row mb-3">
 					<label class="col-sm-2 col-form-label">Genre</label>
 					<div class="col-sm-10">
 						<label class="list-group-item">
@@ -96,7 +96,10 @@
 						</label>
 						<f:errors path="genre" class="text-danger" />
 					</div>
-				</div>
+			</div>
+
+
+			<f:hidden path="grpC" />
 
 
 		    </div>

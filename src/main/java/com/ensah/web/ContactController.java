@@ -94,6 +94,7 @@ public class ContactController {
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
             try {
+                //contactService.modifierContactInfo(contact);
                 contactService.modifierContact(contact);
                 model.addAttribute("infoMsg", "Contact modifié avec succès");
             }catch (DataIntegrityViolationException ex){
