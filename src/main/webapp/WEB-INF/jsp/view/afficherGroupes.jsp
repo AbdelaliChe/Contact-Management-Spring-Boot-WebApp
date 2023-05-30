@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ include file="header.jsp" %>
 <div class="container p-4">
 
@@ -56,12 +57,15 @@
 								</ul>
 							</c:if>
 						</div>
-						<div class="card-footer fw-bold d-flex justify-content-center align-items-center">
+						<div class="card-footer position-relative fw-bold d-flex justify-content-center align-items-center">
 							<button type="button" class="btn">
 								<a href="${pageContext.request.contextPath}/afficherContactsOfGroupe/${groupe.idGroupe}" class="text-reset text-decoration-none text-truncate">
 									<i class="fa fa-users me-2"></i>Afficher toutes les Contacts du Groupe
 								</a>
 							</button>
+							<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+									${groupe.contacts.size()-contactCount}+
+							</span>
 						</div>
 					</div>
 				</div>

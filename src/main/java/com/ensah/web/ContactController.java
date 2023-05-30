@@ -28,7 +28,7 @@ public class ContactController {
     @Autowired
     IGroupeService groupeService;
 
-    @GetMapping({"/afficherFormContact","/"})
+    @GetMapping("/afficherFormContact")
     public String afficherFormContact(Model model) {
 
         model.addAttribute("contactModel", new Contact());
@@ -153,7 +153,7 @@ public class ContactController {
             model.addAttribute("errorMsg", "Les données sont invalides.");
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
-            List<Contact> contactR = contactService.RechercheParNom(contact);
+            List<Contact> contactR = contactService.RechercheParNom(contact.getNom());
             if (contactR.isEmpty()) {
                 model.addAttribute("errorMsg", "Aucun contact trouvé");
             } else {
@@ -283,7 +283,7 @@ public class ContactController {
             model.addAttribute("errorMsg", "Les données sont invalides.");
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
-            List<Groupe> groupeR=groupeService.RechercheParNom(grp);
+            List<Groupe> groupeR=groupeService.RechercheParNom(grp.getNom());
             if (groupeR.isEmpty()) {
                 model.addAttribute("errorMsg", "Aucun groupe trouvé");
             } else {
@@ -334,5 +334,15 @@ public class ContactController {
         groupeService.modifierGroupe(grp);
 
         return "redirect:/afficherContactsOfGroupe/"+id;
+    }
+
+    @GetMapping({"/accueil","/"})
+    public String Accueil(Model model) {
+
+        model.addAttribute("nbrOfConatcts",contactService.getRowCount());
+        model.addAttribute("nbrOfGroupes",groupeService.getRowCount());
+
+
+        return "accueil";
     }
 }

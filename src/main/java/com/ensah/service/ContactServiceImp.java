@@ -52,9 +52,9 @@ public class ContactServiceImp implements IContactService{
     }
 
 
-    public List<Contact> RechercheParNom(Contact contact) {
+    public List<Contact> RechercheParNom(String nom) {
 
-        return contactDao.findByNomPhonetique(contact.getNom());
+        return contactDao.findByNomPhonetique(nom);
     }
 
     @Override
@@ -85,6 +85,11 @@ public class ContactServiceImp implements IContactService{
         grp.getContacts().remove(cnt);
         cnt.setGrpC(null);
         modifierContact(cnt);
+    }
+
+    @Override
+    public Long getRowCount() {
+        return contactDao.count();
     }
 
 }

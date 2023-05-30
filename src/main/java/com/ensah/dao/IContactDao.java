@@ -20,5 +20,6 @@ public interface IContactDao extends JpaRepository<Contact, Long> {
     @Query(value = "SELECT * FROM contact WHERE telephone_personnel = :num OR telephone_professionel = :num", nativeQuery = true)
     Contact findByNumTelephone(String num);
 
+    long count();
 
 }

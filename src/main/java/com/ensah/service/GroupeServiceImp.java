@@ -55,9 +55,9 @@ public class GroupeServiceImp implements IGroupeService{
     }
 
     @Override
-    public List<Groupe> RechercheParNom(Groupe grp) {
+    public List<Groupe> RechercheParNom(String nom) {
 
-        return groupeDao.findByNomContaining(grp.getNom());
+        return groupeDao.findByNomContaining(nom);
     }
 
     @Override
@@ -102,6 +102,11 @@ public class GroupeServiceImp implements IGroupeService{
             Groupe grp = getGroupeById(id);
             contact.setGrpC(grp);
         }
+    }
+
+    @Override
+    public Long getRowCount() {
+        return groupeDao.count();
     }
 
 }

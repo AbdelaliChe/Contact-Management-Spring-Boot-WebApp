@@ -19,7 +19,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-primary px-3">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/afficherContacts">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/accueil">
 				<i class="fa fa-square-phone text-light fa-lg me-2"></i><span class="fw-bold">t-Contacts</span>
 			</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -29,6 +29,9 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link"
+											href="${pageContext.request.contextPath}/accueil">Accueil</a></li>
+
 					<li class="nav-item"><a class="nav-link"
 											href="${pageContext.request.contextPath}/afficherFormContact">Ajout Contact</a></li>
 					<li class="nav-item"><a class="nav-link"
@@ -42,8 +45,6 @@
 											href="${pageContext.request.contextPath}/afficherGroupes">Mes Groupes</a></li>
 					<li class="nav-item"><a class="nav-link"
 											href="${pageContext.request.contextPath}/rechercherGroupe">Rechercher Groupe</a></li>
-				</ul>
-					</li>
 				</ul>
 			</div>
 		</div>

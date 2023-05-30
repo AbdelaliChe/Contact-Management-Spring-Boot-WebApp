@@ -14,7 +14,7 @@ public interface IGroupeService {
 
     public void supprimerGroupe(Long id);
 
-    public List<Groupe> RechercheParNom(Groupe grp);
+    public List<Groupe> RechercheParNom(String nom);
 
     public Groupe getGroupeById(Long id);
 
@@ -26,4 +26,5 @@ public interface IGroupeService {
 
     public void ajouterAffectation(Contact contact,Long id);
 
+    public Long getRowCount();
 }
