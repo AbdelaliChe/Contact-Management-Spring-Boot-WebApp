@@ -2,8 +2,10 @@ package com.ensah.web;
 
 import com.ensah.bo.Contact;
 import com.ensah.bo.Groupe;
+import com.ensah.bo.User;
 import com.ensah.service.IContactService;
 import com.ensah.service.IGroupeService;
+import com.ensah.service.MyUserDeatailsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -27,6 +29,9 @@ public class ContactController {
 
     @Autowired
     IGroupeService groupeService;
+
+    @Autowired
+    MyUserDeatailsService userDeatailsService;
 
     @GetMapping("/afficherFormContact")
     public String afficherFormContact(Model model) {
@@ -176,7 +181,7 @@ public class ContactController {
     @PostMapping("/NumContactRechercher")
     public String NumContactRechercher(ModelMap model, @RequestParam("telephone") String telephone) {
 
-        if(telephone!=null && telephone.matches("^^06\\d{8}$")){
+        if(telephone!=null && telephone.matches("^(06|07)\\d{8}$")){
             Contact Rcontact=contactService.RechercheParNum(telephone);
             if(Rcontact!=null){
                 model.addAttribute("contactR",Rcontact);
@@ -345,4 +350,46 @@ public class ContactController {
 
         return "accueil";
     }
+
+    @GetMapping ("/login")
+    public String login(@RequestParam(name = "error", required = false) String error,
+                        ModelMap model){
+
+        if (error != null) {
+            String errorMsg = "Numero telephone ou Mot de passe incorrecte";
+            model.addAttribute("errorMsg", errorMsg);
+        }
+
+        return "login";
+    }
+
+    @GetMapping ("/inscrirptionForm")
+    public String inscrirptionForm(ModelMap model){
+
+        model.addAttribute("userModel", new User());
+
+        return "inscrire";
+    }
+
+    @PostMapping ("/inscrirption")
+    public String inscrire(@Valid @ModelAttribute("userModel") User user, BindingResult bindingResult,
+                           ModelMap model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errorMsg", "Les données sont invalides.");
+            LOGGER.warn("Erreur de validation du formulaire");
+        } else {
+            try{
+                userDeatailsService.creeUser(user);
+                model.addAttribute("infoMsg", "Compte inscrit avec succès");
+            }catch (DataIntegrityViolationException ex){
+                model.addAttribute("errorMsg", "Compte deja existe avec méme numero telephone");
+                LOGGER.error("Erreur de unique num tele" + ex.getMessage());
+            }
+        }
+
+        return "inscrire";
+    }
+
+
 }

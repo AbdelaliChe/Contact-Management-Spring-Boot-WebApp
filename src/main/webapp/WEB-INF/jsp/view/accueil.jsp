@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -9,9 +11,12 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 	<link rel="icon" type="image/svg" href="images/favicon.svg">
-	<script type="text/javascript" src="js/navlink.js" defer></script>
+	<script type="text/javascript" src="scripts/navlink.js" defer></script>
 </head>
 <body class="bg-primary">
+
+<sec:authentication property="principal.username" var="username" />
+
 <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-primary px-3 fixed-top">
 	<div class="container-fluid">
 		<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
@@ -23,6 +28,8 @@
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/groupeForm">Ajout Groupe</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/afficherGroupes">Mes Groupes</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/rechercherGroupe">Rechercher Groupe</a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout">Se Déconnecter</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -117,6 +124,7 @@
 		<p class="mb-0">&copy; 2023 t-Contacts.</p>
 	</div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

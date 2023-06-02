@@ -13,7 +13,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="icon" type="image/svg" href="images/favicon.svg">
-<script type="text/javascript" src="js/navlink.js" defer></script>
+<script type="text/javascript" src="scripts/navlink.js" defer></script>
 
 </head>
 <body>
@@ -45,6 +45,7 @@
 											href="${pageContext.request.contextPath}/afficherGroupes">Mes Groupes</a></li>
 					<li class="nav-item"><a class="nav-link"
 											href="${pageContext.request.contextPath}/rechercherGroupe">Rechercher Groupe</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout">Se Déconnecter</a></li>
 				</ul>
 			</div>
 		</div>

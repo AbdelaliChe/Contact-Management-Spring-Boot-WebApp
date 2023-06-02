@@ -19,10 +19,10 @@ public class Contact {
 
     @NotBlank(message = "champs important!")
     @Column(unique=true)
-    @Pattern(regexp = "^06\\d{8}$", message = "numero de telphone commence par 06 + 8 chiffres")
+    @Pattern(regexp = "^(06|07)\\d{8}$", message = "numero de telphone: 06/07 + 8 chiffres")
     private String telephonePersonnel;
 
-    @Pattern(regexp = "^06\\d{8}$", message = "numero de telphone commence par 06 + 8 chiffres")
+    @Pattern(regexp = "^(06|07)\\d{8}$", message = "numero de telphone: 06/07 + 8 chiffres")
     private String telephoneProfessionel;
 
     private String adresse;
