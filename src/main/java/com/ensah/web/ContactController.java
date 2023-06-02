@@ -5,7 +5,7 @@ import com.ensah.bo.Groupe;
 import com.ensah.bo.User;
 import com.ensah.service.IContactService;
 import com.ensah.service.IGroupeService;
-import com.ensah.service.MyUserDeatailsService;
+import com.ensah.service.UserServiceImp;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -31,7 +31,7 @@ public class ContactController {
     IGroupeService groupeService;
 
     @Autowired
-    MyUserDeatailsService userDeatailsService;
+    UserServiceImp userDeatailsService;
 
     @GetMapping("/afficherFormContact")
     public String afficherFormContact(Model model) {

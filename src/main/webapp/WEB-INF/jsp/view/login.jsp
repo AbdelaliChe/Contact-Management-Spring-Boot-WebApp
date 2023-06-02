@@ -63,14 +63,15 @@
                                             </button>
                                         </div>
 
-
-                                        <div class="text-center mt-5 text-dark">
-                                            Vous n'avez pas encore de compte? <a href="${pageContext.request.contextPath}/inscrirptionForm"class="text-primary">S'inscrire</a>
-                                        </div>
-                                        <div class="text-center mt-5 text-secondary">
-                                            &copy; 2023 t-Contacts
-                                        </div>
                                     </form>
+
+
+                                    <div class="text-center mt-5 text-dark">
+                                        Vous n'avez pas encore de compte? <a href="${pageContext.request.contextPath}/inscrirptionForm"class="text-primary">S'inscrire</a>
+                                    </div>
+                                    <div class="text-center mt-5 text-secondary">
+                                        &copy; 2023 t-Contacts
+                                    </div>
 
                                 </div>
                             </div>

@@ -9,3 +9,4 @@ for (let link of navLinks) {
         link.classList.remove("active");
     }
 }
+

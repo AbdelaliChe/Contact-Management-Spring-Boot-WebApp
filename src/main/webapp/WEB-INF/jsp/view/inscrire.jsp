@@ -73,14 +73,14 @@
 
                         <div class="row mb-3">
                             <div class="col me-2">
-                                <label class="mb-2 text-muted">Numero<strong>*</strong></label>
+                                <label class="mb-2 text-muted">Numero Telephone<strong>*</strong></label>
                                 <f:input path="telephone" type="text" class="form-control"
                                          placeholder="Numero Telephone" />
                                 <f:errors path="telephone" class="text-danger" />
                             </div>
                             <div class="col me-2">
                                 <label class="mb-2 text-muted">Mot de passe<strong>*</strong></label>
-                                <f:input path="motDePasse" type="password" class="form-control"
+                                <f:input path="motDePasse" type="password" id="mdp" class="form-control"
                                          placeholder="Mot de Passe" />
                                 <f:errors path="motDePasse" class="text-danger" />
                             </div>
@@ -105,15 +105,13 @@
                                 S'inscrire
                             </button>
                         </div>
-
-
-                        <div class="text-center text-dark">
-                            Vous avez deja un compte? <a href="${pageContext.request.contextPath}/login"class="text-primary">Se Connecter</a>
-                        </div>
-                        <div class="text-center mt-3 text-secondary">
-                            &copy; 2023 t-Contacts
-                        </div>
                     </f:form>
+                    <div class="text-center text-dark">
+                        Vous avez deja un compte? <a href="${pageContext.request.contextPath}/login"class="text-primary">Se Connecter</a>
+                    </div>
+                    <div class="text-center mt-3 text-secondary">
+                        &copy; 2023 t-Contacts
+                    </div>
                 </div>
             </div>
         </div>
