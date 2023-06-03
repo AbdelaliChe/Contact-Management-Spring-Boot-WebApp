@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +16,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="icon" type="image/svg" href="images/favicon.svg">
 <script type="text/javascript" src="scripts/navlink.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" defer></script>
+
 
 </head>
 <body>
@@ -45,8 +49,20 @@
 											href="${pageContext.request.contextPath}/afficherGroupes">Mes Groupes</a></li>
 					<li class="nav-item"><a class="nav-link"
 											href="${pageContext.request.contextPath}/rechercherGroupe">Rechercher Groupe</a></li>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout">Se Déconnecter</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
+
+	<sec:authentication property="principal" var="userConnected" />
+	<div class="btn-group dropup position-fixed bottom-0 end-0 m-3" style="z-index: 3;">
+		<button class="btn btn-primary dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+			<i class="fa fa-circle text-light me-2"></i>${userConnected.user.getNom()} ${userConnected.user.getPrenom()}
+		</button>
+		<ul class="dropdown-menu">
+			<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/modifierUserForm">Modifier Profile<i class="fa fa-user-pen ms-2"></i></a></li>
+			<li><hr class="dropdown-divider"></li>
+			<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/logout">Se Deconnecter<i class="fa fa-arrow-right-from-bracket ms-2"></i></a></li>
+		</ul>
+	</div>
+

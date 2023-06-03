@@ -5,7 +5,7 @@ import com.ensah.bo.Groupe;
 import com.ensah.bo.User;
 import com.ensah.service.IContactService;
 import com.ensah.service.IGroupeService;
-import com.ensah.service.UserServiceImp;
+import com.ensah.service.IUserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 //@RequestMapping({"/t-contact","/"})
@@ -31,7 +32,7 @@ public class ContactController {
     IGroupeService groupeService;
 
     @Autowired
-    UserServiceImp userDeatailsService;
+    IUserService userService;
 
     @GetMapping("/afficherFormContact")
     public String afficherFormContact(Model model) {
@@ -99,7 +100,6 @@ public class ContactController {
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
             try {
-                //contactService.modifierContactInfo(contact);
                 contactService.modifierContact(contact);
                 model.addAttribute("infoMsg", "Contact modifié avec succès");
             }catch (DataIntegrityViolationException ex){
@@ -181,7 +181,7 @@ public class ContactController {
     @PostMapping("/NumContactRechercher")
     public String NumContactRechercher(ModelMap model, @RequestParam("telephone") String telephone) {
 
-        if(telephone!=null && telephone.matches("^(06|07)\\d{8}$")){
+        if(telephone.matches("^(06|07)\\d{8}$")){
             Contact Rcontact=contactService.RechercheParNum(telephone);
             if(Rcontact!=null){
                 model.addAttribute("contactR",Rcontact);
@@ -380,7 +380,7 @@ public class ContactController {
             LOGGER.warn("Erreur de validation du formulaire");
         } else {
             try{
-                userDeatailsService.creeUser(user);
+                userService.creeUser(user);
                 model.addAttribute("infoMsg", "Compte inscrit avec succès");
             }catch (DataIntegrityViolationException ex){
                 model.addAttribute("errorMsg", "Compte deja existe avec méme numero telephone");
@@ -391,5 +391,63 @@ public class ContactController {
         return "inscrire";
     }
 
+    @GetMapping ("/modifierUserForm")
+    public String modifierUserForm(ModelMap model,Principal principal){
+
+        String telephone = principal.getName();
+        User user = userService.getUserByTele(telephone);
+        model.addAttribute("userModel", user);
+
+        return "userModification";
+    }
+
+    @PostMapping("/modifierUser")
+    public String modifierUser(@Valid @ModelAttribute("userModel") User user,
+                                  BindingResult bindingResult, ModelMap model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errorMsg", "Les données sont invalides.");
+            LOGGER.warn("Erreur de validation du formulaire");
+        } else {
+            try {
+                userService.modifierUser(user);
+                model.addAttribute("infoMsg", "Profile modifié avec succès");
+            }catch (DataIntegrityViolationException ex){
+                model.addAttribute("errorMsg", "User deja existe avec méme numero telephone");
+                LOGGER.error("Erreur de unique num tele" + ex.getMessage());
+            }
+        }
+
+        return "userModification";
+    }
+
+    @GetMapping ("/MotDePasseForm")
+    public String MotDePasseForm(){
+
+        return "modifierMotDePasse";
+    }
+
+    @PostMapping("/modifierMotDePasse")
+    public String modifierMotDePasse(ModelMap model,Principal principal,
+                                     @RequestParam("OldMotDePasse") String OldMotDePasse
+                                        , @RequestParam("NewMotDePasse") String NewMotDePasse) {
+
+        if(OldMotDePasse!="" && NewMotDePasse!=""){
+            try {
+                String telephone = principal.getName();
+                User user = userService.getUserByTele(telephone);
+                userService.modifierUserMDP(user,OldMotDePasse,NewMotDePasse);
+                model.addAttribute("infoMsg", "Mot de passe modifié avec succès");
+            }catch (IllegalArgumentException ex){
+                model.addAttribute("errorMsg", "Verifier votre ancien mdp");
+                LOGGER.error("Erreur mdp" + ex.getMessage());
+            }
+        }else{
+            model.addAttribute("errorMsg", "Les données sont invalides.");
+            LOGGER.warn("Erreur de validation du formulaire");
+        }
+
+        return "modifierMotDePasse";
+    }
 
 }

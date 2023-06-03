@@ -3,6 +3,7 @@
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<sec:authentication property="principal" var="userConnected" />
 
 <!DOCTYPE html>
 <html>
@@ -15,8 +16,6 @@
 </head>
 <body class="bg-primary">
 
-<sec:authentication property="principal.username" var="username" />
-
 <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-primary px-3 fixed-top">
 	<div class="container-fluid">
 		<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
@@ -28,8 +27,6 @@
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/groupeForm">Ajout Groupe</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/afficherGroupes">Mes Groupes</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/rechercherGroupe">Rechercher Groupe</a></li>
-				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout">Se Déconnecter</a>
-				</li>
 			</ul>
 		</div>
 	</div>
@@ -38,6 +35,7 @@
 <div class="container py-5">
 	<section class="jumbotron jumbotron-fluid text-center mt-4">
 		<div class="container">
+
 			<h1 class="display-4">
 				<i class="fas fa-square-phone text-light me-2"></i><span class="fw-bold text-light">t-Contacts</span>
 			</h1>
@@ -115,13 +113,24 @@
 		</div>
 	</section>
 </div>
+
+<div class="btn-group dropup position-absolute position-fixed bottom-0 end-0 m-3 z-index-2">
+	<button class="btn btn-light dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+		<i class="fa fa-circle text-danger me-2"></i>${userConnected.user.getNom()} ${userConnected.user.getPrenom()}</button>
+	<ul class="dropdown-menu">
+		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/modifierUserForm">Modifier Profile<i class="fa fa-user-pen ms-2"></i></a></li>
+		<li><hr class="dropdown-divider"></li>
+		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Se Deconnecter<i class="fa fa-arrow-right-from-bracket ms-2"></i></a></li>
+	</ul>
+</div>
+
 <div class="image-container">
 	<img src="images/contacts1.svg" alt="accueil" class="img-fluid">
 </div>
 
-<footer class="footer bg-light text-center py-3 d-flex align-items-center">
+<footer class="footer bg-primary text-center py-3 d-flex align-items-center">
 	<div class="container">
-		<p class="mb-0">&copy; 2023 t-Contacts.</p>
+		<p class="mb-0 text-light">&copy; 2023 t-Contacts.</p>
 	</div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>

@@ -33,5 +33,34 @@ public class UserServiceImp implements IUserService {
 		}
 	}
 
+	@Override
+	public void modifierUser(User user) {
+		try {
+			userDao.save(user);
+		} catch (DataIntegrityViolationException ex) {
+			LOGGER.error("Integrity constraint violation occurred: " + ex.getMessage());
+			throw ex;
+		}
+	}
+
+	@Override
+	public User getUserByTele(String num) {
+
+		return userDao.findByTelephone(num);
+	}
+
+	@Override
+	public void modifierUserMDP(User user, String OldMotDePasse, String NewMotDePasse) {
+
+			if (passwordEncoder.matches(OldMotDePasse, user.getMotDePasse())) {
+				String encryptedPassword = passwordEncoder.encode(NewMotDePasse);
+				user.setMotDePasse(encryptedPassword);
+				userDao.save(user);
+			} else {
+				throw new IllegalArgumentException("Verifier votre ancien mdp!");
+			}
+	}
+
+
 
 }
