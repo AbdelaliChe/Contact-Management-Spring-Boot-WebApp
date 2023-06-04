@@ -65,4 +65,3 @@
 			<li><a class="dropdown-item text-primary" href="${pageContext.request.contextPath}/logout">Se Deconnecter<i class="fa fa-arrow-right-from-bracket ms-2"></i></a></li>
 		</ul>
 	</div>
-

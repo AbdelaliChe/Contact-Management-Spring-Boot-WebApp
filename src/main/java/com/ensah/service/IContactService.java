@@ -2,7 +2,6 @@ package com.ensah.service;
 
 import com.ensah.bo.Contact;
 import com.ensah.bo.Groupe;
-
 import java.util.List;
 
 public interface IContactService {

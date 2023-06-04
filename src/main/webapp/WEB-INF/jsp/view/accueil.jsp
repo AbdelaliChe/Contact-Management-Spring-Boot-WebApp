@@ -12,7 +12,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 	<link rel="icon" type="image/svg" href="images/favicon.svg">
-	<script type="text/javascript" src="scripts/navlink.js" defer></script>
 </head>
 <body class="bg-primary">
 
@@ -114,9 +113,10 @@
 	</section>
 </div>
 
-<div class="btn-group dropup position-absolute position-fixed bottom-0 end-0 m-3 z-index-2">
+<div class="btn-group dropup position-absolute position-fixed bottom-0 end-0 m-3">
 	<button class="btn btn-light dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-		<i class="fa fa-circle text-danger me-2"></i>${userConnected.user.getNom()} ${userConnected.user.getPrenom()}</button>
+		<i class="fa fa-circle text-danger me-2"></i>${userConnected.user.getNom()} ${userConnected.user.getPrenom()}
+	</button>
 	<ul class="dropdown-menu">
 		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/modifierUserForm">Modifier Profile<i class="fa fa-user-pen ms-2"></i></a></li>
 		<li><hr class="dropdown-divider"></li>
@@ -133,6 +133,7 @@
 		<p class="mb-0 text-light">&copy; 2023 t-Contacts.</p>
 	</div>
 </footer>
+<script type="text/javascript" src="scripts/navlink.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

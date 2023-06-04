@@ -82,7 +82,7 @@ public class ContactController {
         return "redirect:/afficherContacts";
     }
 
-    @RequestMapping("/modifierContactForm/{id}")
+    @GetMapping ("/modifierContactForm/{id}")
     public String modifierContactForm(Model model,@PathVariable Long id) {
 
         Contact cnt = contactService.getContactById(id);
@@ -111,7 +111,7 @@ public class ContactController {
         return "modifierContactForm";
     }
 
-    @RequestMapping("/affectationForm/{id}")
+    @GetMapping("/affectationForm/{id}")
     public String affectationForm(Model model, @PathVariable Long id) {
 
         Contact cnt = contactService.getContactById(id);
@@ -244,7 +244,7 @@ public class ContactController {
         return "redirect:/afficherGroupes";
     }
 
-    @RequestMapping("/modifierGrpForm/{id}")
+    @GetMapping("/modifierGrpForm/{id}")
     public String modifierFormGrp(Model model,@PathVariable Long id) {
 
         Groupe grp = groupeService.getGroupeById(id);
@@ -300,18 +300,18 @@ public class ContactController {
         return "rechercherGroupe";
     }
 
-    @RequestMapping("/afficherContactsOfGroupe/{id}")
+    @GetMapping("/afficherContactsOfGroupe/{id}")
     public String afficherContactsOfGroupe(Model model,@PathVariable Long id) {
 
         Groupe grp = groupeService.getGroupeById(id);
         model.addAttribute("grpModel", grp);
-        model.addAttribute("listContacts",grp.getContacts());
+        model.addAttribute("listContacts",groupeService.getContactsOfGroupe(grp));
 
         return "afficherContactsOfGroupe";
     }
 
 
-    @RequestMapping("/ContactsToAjouterGroupe/{id}")
+    @GetMapping("/ContactsToAjouterGroupe/{id}")
     public String ContactsToAjouterGroupe(Model model,@PathVariable Long id) {
 
         Groupe grp=groupeService.getGroupeById(id);
@@ -346,7 +346,6 @@ public class ContactController {
 
         model.addAttribute("nbrOfConatcts",contactService.getRowCount());
         model.addAttribute("nbrOfGroupes",groupeService.getRowCount());
-
 
         return "accueil";
     }
@@ -450,4 +449,10 @@ public class ContactController {
         return "modifierMotDePasse";
     }
 
+
+    @ExceptionHandler(value = {org.springframework.web.servlet.NoHandlerFoundException.class})
+    public String handle404Error() {
+
+        return "error";
+    }
 }

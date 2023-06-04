@@ -105,6 +105,11 @@ public class GroupeServiceImp implements IGroupeService{
     }
 
     @Override
+    public List<Contact> getContactsOfGroupe(Groupe groupe) {
+        return groupe.getContacts();
+    }
+
+    @Override
     public Long getRowCount() {
         return groupeDao.count();
     }

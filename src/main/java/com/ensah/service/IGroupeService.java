@@ -26,5 +26,7 @@ public interface IGroupeService {
 
     public void ajouterAffectation(Contact contact,Long id);
 
+    public List<Contact> getContactsOfGroupe(Groupe groupe);
+
     public Long getRowCount();
 }

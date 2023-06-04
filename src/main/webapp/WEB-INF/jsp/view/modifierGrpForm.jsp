@@ -3,7 +3,7 @@
 
 <div class="container p-4">
 
-	<div class="d-flex justify-content-between align-items-end mb-3">
+	<div class="d-flex justify-content-between align-items-center mb-4">
 		<h1 id="title">Modifier Groupe</h1>
 		<div>
 			<button class="btn btn-dark">
