@@ -1,4 +1,4 @@
-package com.ensah.bo;
+package com.ensah.core.bo;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

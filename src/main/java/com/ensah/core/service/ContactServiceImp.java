@@ -1,8 +1,8 @@
-package com.ensah.service;
+package com.ensah.core.service;
 
-import com.ensah.bo.Contact;
-import com.ensah.bo.Groupe;
-import com.ensah.dao.IContactDao;
+import com.ensah.core.bo.Contact;
+import com.ensah.core.bo.Groupe;
+import com.ensah.core.dao.IContactDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

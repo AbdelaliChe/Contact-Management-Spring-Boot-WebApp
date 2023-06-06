@@ -1,7 +1,9 @@
 package com.ensah.service;
 
-import com.ensah.bo.Contact;
-import com.ensah.bo.Groupe;
+import com.ensah.core.bo.Contact;
+import com.ensah.core.bo.Groupe;
+import com.ensah.core.service.IContactService;
+import com.ensah.core.service.IGroupeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

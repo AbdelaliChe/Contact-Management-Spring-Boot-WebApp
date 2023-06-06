@@ -1,7 +1,7 @@
-package com.ensah.service;
+package com.ensah.core.service;
 
-import com.ensah.bo.User;
-import com.ensah.dao.IUserDao;
+import com.ensah.core.bo.User;
+import com.ensah.core.dao.IUserDao;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;

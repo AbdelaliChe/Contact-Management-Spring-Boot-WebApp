@@ -1,11 +1,11 @@
-package com.ensah.web;
+package com.ensah.core.web;
 
-import com.ensah.bo.Contact;
-import com.ensah.bo.Groupe;
-import com.ensah.bo.User;
-import com.ensah.service.IContactService;
-import com.ensah.service.IGroupeService;
-import com.ensah.service.IUserService;
+import com.ensah.core.bo.Contact;
+import com.ensah.core.bo.Groupe;
+import com.ensah.core.bo.User;
+import com.ensah.core.service.IContactService;
+import com.ensah.core.service.IGroupeService;
+import com.ensah.core.service.IUserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;

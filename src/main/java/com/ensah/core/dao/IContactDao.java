@@ -1,6 +1,6 @@
-package com.ensah.dao;
+package com.ensah.core.dao;
 
-import com.ensah.bo.Contact;
+import com.ensah.core.bo.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import java.util.List;

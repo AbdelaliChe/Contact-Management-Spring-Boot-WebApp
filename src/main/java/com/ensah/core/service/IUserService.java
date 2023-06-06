@@ -1,6 +1,6 @@
-package com.ensah.service;
+package com.ensah.core.service;
 
-import com.ensah.bo.User;
+import com.ensah.core.bo.User;
 
 public interface IUserService {
 

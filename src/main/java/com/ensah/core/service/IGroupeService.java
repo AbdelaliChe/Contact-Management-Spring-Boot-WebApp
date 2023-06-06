@@ -1,7 +1,7 @@
-package com.ensah.service;
+package com.ensah.core.service;
 
-import com.ensah.bo.Contact;
-import com.ensah.bo.Groupe;
+import com.ensah.core.bo.Contact;
+import com.ensah.core.bo.Groupe;
 
 import java.util.List;
 

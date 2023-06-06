@@ -1,6 +1,6 @@
 package com.ensah.security;
 
-import com.ensah.bo.User;
+import com.ensah.core.bo.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

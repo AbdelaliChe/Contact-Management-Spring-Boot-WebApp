@@ -1,7 +1,7 @@
 package com.ensah.security;
 
-import com.ensah.bo.User;
-import com.ensah.dao.IUserDao;
+import com.ensah.core.bo.User;
+import com.ensah.core.dao.IUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
