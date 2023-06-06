@@ -43,8 +43,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/scripts/**",
 		};
 
-		http.csrf().disable()
-				.authorizeRequests()
+		http.authorizeRequests()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/inscrirption", "/inscrirptionForm").permitAll()
 				.antMatchers(staticResources).permitAll()
