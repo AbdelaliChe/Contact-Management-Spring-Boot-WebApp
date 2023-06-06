@@ -25,9 +25,6 @@
 
 
 			<form action="/modifierMotDePasse" method="POST">
-
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
 				<div class="form-group row mb-3">
 					<label class="col-sm-2 col-form-label">Votre MDP</label>
 					<div class="col-sm-10">

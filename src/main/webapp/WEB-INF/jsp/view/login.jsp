@@ -46,8 +46,6 @@
 
                                     <form action="login" method="POST">
 
-                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
                                         <div class="mb-3">
                                             <label class="mb-2 text-muted">Identifiant</label>
                                             <input type="identifiant" class="form-control" name="username" placeholder="Numero Telephone">
