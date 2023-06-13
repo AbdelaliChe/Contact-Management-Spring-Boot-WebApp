@@ -88,7 +88,7 @@
 					<div class="col-sm-10">
 						<label class="list-group-item">
 							<input class="form-check-input me-1" type="radio" name="genre" id="femelleRadio" value="femelle" ${contactModel.genre == 'femelle' ? 'checked' : ''}>
-							Female
+							Femelle
 						</label>
 						<label class="list-group-item">
 							<input class="form-check-input me-1" type="radio" name="genre" id="maleRadio"  value="male" ${contactModel.genre == 'male' ? 'checked' : ''}>

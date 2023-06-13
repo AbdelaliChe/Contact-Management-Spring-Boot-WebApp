@@ -101,6 +101,7 @@ public class GroupeServiceImp implements IGroupeService{
         else{
             Groupe grp = getGroupeById(id);
             contact.setGrpC(grp);
+            modifierGroupe(grp);
         }
     }
 
