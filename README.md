@@ -2,6 +2,8 @@
 
 This project aims to develop a contact management application using Spring Boot and Spring Security. The application allows users to efficiently manage their contacts with various functionalities.
 
+![Screenshot 0](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts3.png)
+
 ## Functionalities
 
 ### User Management
@@ -41,3 +43,18 @@ The project is developed using the following technologies:
 ## Authors
 
 - **Chentoui Abdelali** - _CS Student_ - [AbdelaliChe](https://github.com/AbdelaliChe/)
+
+![Screenshot 1](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts1.png)
+![Screenshot 2](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts2.png)
+![Screenshot 3](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts3.png)
+![Screenshot 4](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts4.png)
+![Screenshot 5](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts5.png)
+![Screenshot 6](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts6.png)
+![Screenshot 7](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts7.png)
+![Screenshot 8](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts8.png)
+![Screenshot 9](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts9.png)
+![Screenshot 10](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts10.png)
+![Screenshot 11](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts11.png)
+![Screenshot 12](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts12.png)
+![Screenshot 13](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts13.png)
+![Screenshot 14](https://github.com/AbdelaliChe/Contact-Management-Spring-Boot-WebApp/screenShots/t-Contacts14.png)
